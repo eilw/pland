@@ -3,6 +3,7 @@ class ContactMailer < ApplicationMailer
 
   def send_form_info(contact)
     @contact = contact
+    p @contact
     mail(to: @contact.email, subject: 'Sample Email', body: 'Another test')
   end
 end
