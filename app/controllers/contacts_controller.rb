@@ -1,8 +1,9 @@
 class ContactsController < ApplicationController
 
   def create
-    @contacts = Contact.new(contact_params)
-    redirect_to home_index_path
+    @contact = Contact.new(contact_params)
+    ContactMailer.send_form_info(@contact).deliver_now
+    redirect_to home_index_path, notice: "Thankyou for your message."
   end
 
   private

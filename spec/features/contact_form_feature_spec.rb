@@ -10,6 +10,7 @@ feature 'contact form' do
       fill_in('contact_message', with: 'My message to you')
       check('request_call')
       click_button('Submit')
+      expect(current_path).to eq(home_index_path)
       expect(page).to have_content('Gracias por su mensaje')
     end
 end
