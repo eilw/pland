@@ -1,16 +1,22 @@
-rvm: '2.2.3'
+language: ruby
 
-script:
-  - mkdir -p spec && bundle exec rspec spec
+rvm:
+  - 2.3.0
+  - jruby
+  - rbx
 
-before_install:
-- sed -i '2d' Gemfile
-- sudo apt-get update -qq
-- sudo apt-get install -qq postgresql-server-dev-9.3
 
-before_script:
-  - psql -c 'create database pland_test;' -U postgres
-
-deploy:
-  provider: heroku
-  app: pland-beta
+# script:
+#   - mkdir -p spec && bundle exec rspec spec
+#
+# before_install:
+# - sed -i '2d' Gemfile
+# - sudo apt-get update -qq
+# - sudo apt-get install -qq postgresql-server-dev-9.3
+#
+# before_script:
+#   - psql -c 'create database pland_test;' -U postgres
+#
+# deploy:
+#   provider: heroku
+#   app: pland-beta
