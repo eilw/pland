@@ -1,25 +1,11 @@
 language: ruby
-
-rvm: '2.3.0'
-
-
-# script:
-#   - mkdir -p spec && bundle exec rspec spec
-#
-# before_install:
-# - sed -i '2d' Gemfile
-# - sudo apt-get update -qq
-# - sudo apt-get install -qq postgresql-server-dev-9.3
-#
-# before_script:
-#   - psql -c 'create database pland_test;' -U postgres
-#
-# deploy:
-#   provider: heroku
-#   app: pland-beta
-
-# script: bundle exec rspec spec
-# script:
-#   - bundle exec bin/rake db:create
-#   - bundle exec bin/rake db:migrate
-#   - bundle exec rspec spec
+rvm: 2.3.0
+script:
+- bundle exec bin/rake db:create
+- bundle exec bin/rake db:migrate
+- bundle exec rspec spec
+deploy:
+  provider: heroku
+  app: pland-beta
+  api_key:
+    secure: FDsTF5rsuk5csGIGgtWca1ehdJIXcQso4lEVIrGk+SrcQY73HuIeVpsKFuNP6Ti+mahjXRWlDo0pTSmDXNlvSiISShSkL1Y3zOwoqEgpBWuXvhRcntGCoC5IPrYhYCICOt3li5oIE/ZKzoaOdw3vxnhGgQO87h77EDiVn5wyVrPNp4MGEuX9OUce0FdRa5548AZqD4IjmfVnP49+fG+3xzhzK+ZuRyC+u9NVi3omhkkYJXvQSrxf/nLhPFNzDuSd/A/O+squIL8R6QlpB81WgYb43pkCiyldBKwomNI4bnyMLxf3Eyvk/shD1Titwc0Do2kDO/VnVVii0ZKfGz6bEh4fgO2I9Jr685zWsgd3fY4/Uh4HyIjZ0v5AYz2h5GPqrqvD0UVhwxFY4qxTxK6aOpSHtyrzDEf4K/AMTXGfn20m5tn+IZDdWnu0hfgVVYbZBxQshLRFwKmegy0pGj+3IP/dVE0aHfv+gXZYQHiXD5aRZESVfM9S5JSggMgwN9yTyAVmnI+Fgyxmz3KiCXkys4uZYmKFu/QnxSd8Tz7JP+sMchNSmXszz0j5eJUzr1G4AibXNvY8Y4TexfXHzZndWZaYj1QjQGJGUCa9h+EWY4S51Vzv5m2qN5RUE1DQuQua/XOukCN6LsgQsRT6OiRiVh2p4R+yHluQu2TMcRa8B50=
