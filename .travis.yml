@@ -17,3 +17,9 @@ rvm: '2.3.0'
 # deploy:
 #   provider: heroku
 #   app: pland-beta
+
+# script: bundle exec rspec spec
+# script:
+#   - bundle exec bin/rake db:create
+#   - bundle exec bin/rake db:migrate
+#   - bundle exec rspec spec
