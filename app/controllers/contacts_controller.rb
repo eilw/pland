@@ -1,5 +1,8 @@
 class ContactsController < ApplicationController
 
+  def index
+  end
+
   def create
     @contact = Contact.new(contact_params)
     ContactMailer.send_form_info(@contact).deliver_now
