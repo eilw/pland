@@ -8,8 +8,8 @@ Rails.application.configure do
   config.cache_classes = true
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-        api_key: 'key-4a4967e585fb44758107f96161134884',
-        domain: 'app20dd2f3882a64b45a3b2ca127290544e.mailgun.org'
+        api_key: 'xx',
+        domain: 'pland-beta.herokuapp.com'
 }
 
   # Do not eager load code on boot. This avoids loading your whole application

@@ -6,8 +6,8 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-        api_key: 'key-4a4967e585fb44758107f96161134884',
-        domain: 'app20dd2f3882a64b45a3b2ca127290544e.mailgun.org'
+        api_key: 'xxx',
+        domain: 'pland-beta.herokuapp.com'
 }
 
   config.cache_classes = false
