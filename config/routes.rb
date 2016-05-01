@@ -4,8 +4,12 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  resources :home
-  resources :contacts
+  resources :home, only: [:index]
+  resources :contacts, only: [:index, :create]
+  resources :about, only: [:index]
+  resources :products, only: [:index]
+
+
 
 
 

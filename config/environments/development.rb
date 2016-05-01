@@ -4,15 +4,11 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'app20dd2f3882a64b45a3b2ca127290544e.mailgun.org', #eg: 'yourappname.herokuapp.com'
-    :authentication => :plain,
-  }
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+        api_key: 'xxx',
+        domain: 'pland-beta.herokuapp.com'
+}
 
   config.cache_classes = false
 

@@ -1,9 +1,8 @@
 class ContactMailer < ApplicationMailer
-  default from: "from@pland.com"
+  default from: "pland@example.com"
 
   def send_form_info(contact)
     @contact = contact
-    p @contact
     mail(to: @contact.email, subject: 'Sample Email', body: 'Another test')
   end
 end
