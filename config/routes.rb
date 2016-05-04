@@ -13,6 +13,15 @@ Rails.application.routes.draw do
   resources :contacts, only: [:index, :create]
   resources :about, only: [:index]
   resources :products, only: [:index]
+  resources :users, shallow: true do
+    resources :accounts do
+      resources :quotes do
+        resources :items
+      end
+    end
+
+  end
+
 
 
 
