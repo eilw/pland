@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 describe SteelWidth, type: :model do
-  it { is_expected.to belong_to :item }
+  it { is_expected.to have_many :items }
 end
