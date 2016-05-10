@@ -1,0 +1,3 @@
+class SteelWidth < ActiveRecord::Base
+  belongs_to :item
+end

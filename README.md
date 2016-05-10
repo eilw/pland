@@ -28,3 +28,12 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+Order has many items, cost (decimal), volume(integer), shipping cost(decimal), total cost, status
+
+Item has a steel_type, steel_width, steel_finish, volume(integer), price_per_kg (to be calculated), cost
+
+Steel_type has type type-grade-ls/, cost
+
+Steel_finish has type, cost
