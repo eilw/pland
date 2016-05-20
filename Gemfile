@@ -28,6 +28,7 @@ gem 'haml'
 gem 'mailgun_rails'
 gem 'devise'
 gem 'shoulda'
+gem 'simple_form'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
