@@ -13,14 +13,11 @@ Rails.application.routes.draw do
   resources :contacts, only: [:index, :create]
   resources :about, only: [:index]
   resources :products, only: [:index]
-  resources :users, shallow: true do
-    resources :accounts do
-      resources :orders do
-        resources :items
-      end
-    end
+  resources :users
+  resources :account, only: [:show] 
+  resources :orders, only: [:create,:new] 
 
-  end
+ 
 
 
 

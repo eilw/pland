@@ -1,4 +1,4 @@
-= form_for [@account, @order] do |f|
+= form_for  @order do |f|
   = f.fields_for :item do |ff|
     = ff.collection_select(:steel_type_id, SteelType.all, :id, :steel_type)
     = ff.collection_select(:steel_width_id, SteelWidth.all, :id, :width)

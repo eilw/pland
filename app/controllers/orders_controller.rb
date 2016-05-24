@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    p params
     @order.create(order_params)
   end
 
