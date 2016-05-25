@@ -1,7 +1,8 @@
-= form_for  @order do |f|
+-#= form_for  @order do |f|
   = f.fields_for :item do |ff|
     = ff.collection_select(:steel_type_id, SteelType.all, :id, :steel_type)
     = ff.collection_select(:steel_width_id, SteelWidth.all, :id, :width)
     = ff.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish)
     = ff.submit 'Add item'
   = f.submit 'Add order'
+= link_to 'Add item', new_item_path 

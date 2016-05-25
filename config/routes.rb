@@ -16,8 +16,7 @@ Rails.application.routes.draw do
   resources :users
   resources :account, only: [:show] 
   resources :orders, only: [:create,:new] 
-
- 
+  resources :items, only: [:create, :new] 
 
 
 
