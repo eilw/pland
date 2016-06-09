@@ -1,4 +1,5 @@
-class Account < ActiveRecord::Base
-  belongs_to :user
-  has_many :orders
+class Account 
+  def initialize(user)
+    @user = user
+  end
 end

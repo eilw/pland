@@ -6,7 +6,7 @@ feature 'Make a quote' do
       sign_up
       click_link('Mi cuenta')
       click_link('Crear cotización')
-      select('MIG-307-Si', from: 'Tipo')
+      select('MIG-ER308L', from: 'order_item_steel_type_id')
       select('Gloss', from: 'Acabado')
       fill_in('Volúmen', with: '1000')
       select('0.8', from: 'Diámetro')

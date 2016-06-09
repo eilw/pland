@@ -11,21 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510161858) do
+ActiveRecord::Schema.define(version: 20160527135723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", force: :cascade do |t|
-    t.integer "user_id"
-  end
-
-  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
-
   create_table "items", force: :cascade do |t|
     t.integer  "volume"
     t.decimal  "price_kg"
-    t.decimal  "cost"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "order_id"
@@ -42,10 +35,10 @@ ActiveRecord::Schema.define(version: 20160510161858) do
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "account_id"
+    t.integer  "user_id"
   end
 
-  add_index "orders", ["account_id"], name: "index_orders_on_account_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "steel_finishes", force: :cascade do |t|
     t.string   "finish"
@@ -91,10 +84,9 @@ ActiveRecord::Schema.define(version: 20160510161858) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "accounts", "users"
   add_foreign_key "items", "orders"
   add_foreign_key "items", "steel_finishes"
   add_foreign_key "items", "steel_types"
   add_foreign_key "items", "steel_widths"
-  add_foreign_key "orders", "accounts"
+  add_foreign_key "orders", "users"
 end

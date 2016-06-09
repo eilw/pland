@@ -1,7 +1,7 @@
-= form_for @item do |f|
-  = f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type)
-  = f.collection_select(:steel_width_id, SteelWidth.all, :id, :width)
-  = f.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish)
+= form_for [@order, @item] do |f|
+  = f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type,{include_blank: 'Please select option'})
+  = f.collection_select(:steel_width_id, SteelWidth.all, :id, :width,{include_blank: 'Please select option'})
+  = f.collection_select(steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'})
   = f.label :volume
   = f.number_field :volume
   = f.submit 'Add item'
