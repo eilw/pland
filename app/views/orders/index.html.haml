@@ -1,0 +1,10 @@
+- @orders.each do | order |
+  %ul
+    %li 
+      Order number #{order.id} status is:
+      = order.status
+    %li
+      Total cost: #{order.cost}
+      = link_to 'See order', order_path(order)
+
+

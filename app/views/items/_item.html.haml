@@ -1,3 +1,21 @@
+%p
 = div_for item do
+  Steel type: 
+  = SteelType.find(item.steel_type_id).steel_type
+
+  Steel finish:
+  = SteelFinish.find(item.steel_finish_id).finish
+
+  Steel width:
+  = SteelWidth.find(item.steel_width_id).width
+
+  Price per kg:
   = item.price_kg
-  price per kg
+
+  Volume:
+  = item.volume
+
+  Cost:
+  = item.cost
+
+  = link_to 'Change item', edit_item_path(item)

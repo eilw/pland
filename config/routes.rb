@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index]
   resources :users
   resource :account, only: [:show] 
-  resources :orders, only: [:create,:new, :show], shallow: true do
-    resources :items, only: [:create, :new] 
+  resources :orders, only: [:create,:new, :show, :update, :index, :destroy], shallow: true do
+    resources :items, only: [:create, :new, :edit, :update]
   end
 
 

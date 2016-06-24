@@ -45,13 +45,31 @@ Todo:
 - Item - add blank spaces to seed data -DONE
 - Item - link each item link to an order - DONE
 - Order page: add additional items - DONE
-- Delete account model as part of user
-- Make each order link to a user
-- Clicking create a new order, goes to 'new item' part
-- After adding an item, goes to see the order overview, with an add item
-  link on it
-- Print out the item details for each item
-- Calculate the cost per each item
-- Calculate the cost for the whole order
-- add a edit button for each item
-- Add validations to order and the item
+- Delete account model as part of user - DONE
+- Make each order link to a user - DONE
+- Make the nested order link work - DONE
+- Clicking create a new order, goes to 'new item' part - DONE
+- After adding an item, goes to see the order overview, with an add item link on it - DONE
+- Print out the item details for each item - DONE
+- Add factory girl to test for item cost - DONE
+- Add cost for volume differences - DONE
+- Calculate the cost for the item once the order is built - DONE
+- migration add transport and total cost to order model - DONE
+- Calculate the cost for the whole order - DONE
+- Add a submit button to change order from DRAFT to REQUEST - DONE
+- add a edit button for each item - DONE
+- Add tests that were deleted for make a quote - DONE
+- Add tests & validations to order and the item
+  - Delete all child instances of parent instances (e.g. users / orders,
+    etc)
+  - All items must have one of the options selected, including volume
+  - volume must be a minimum of 1000kg?
+  - Check with andrew how the minimum costs work?
+  - user must be logged in to see the various orders / quotes
+- add a form object
+- add validation for minimum volume of 1000kg
+
+- Update mailer to get to work
+- Fix Diametro to just show which options are valid for MIG / TIG
+- Get price per kg dynamically after diametro has been selected
+

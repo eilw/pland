@@ -1,2 +1,24 @@
+= form_for [@order, @item] do |f|
+
+  = f.label :tipo_e_grado
+  = f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type,{include_blank: 'Please select option'})
+
+  = f.label :diametro
+  = f.collection_select(:steel_width_id, SteelWidth.all, :id, :width,{include_blank: 'Please select option'})
+
+  = f.label :acabado
+  = f.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'})
+
+  = f.label :volumen_kgs
+  = f.number_field :volume
+  = f.submit 'Add item to order'
+
 = render @items
-= link_to 'Add item to order', new_order_item_path(@order)
+= render @order
+
+%p
+  = link_to 'Save quote', order_path(@order), method: :put
+  = link_to 'Cancel quote', order_path(@order), method: :delete
+
+%p
+  = link_to 'Request quote', order_path(@order, status: 'Requested'), method: :put 
