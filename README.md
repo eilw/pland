@@ -59,17 +59,27 @@ Todo:
 - Add a submit button to change order from DRAFT to REQUEST - DONE
 - add a edit button for each item - DONE
 - Add tests that were deleted for make a quote - DONE
-- Add tests & validations to order and the item
+- Add tests & validations to order and the item - DONE
   - Delete all child instances of parent instances (e.g. users / orders,
-    etc)
+    etc) - DONE
   - All items must have one of the options selected, including volume
-  - volume must be a minimum of 1000kg?
-  - Check with andrew how the minimum costs work?
-  - user must be logged in to see the various orders / quotes
-- add a form object
-- add validation for minimum volume of 1000kg
+    - DONE
+  - volume must be a minimum of 1000kg? DONE
+  - user must be logged in to see the various orders / quotes - DONE
+- add validation for minimum volume of 1000kg - DONE
+- add total volume to order - DONE
+- add comment field to order
 
+
+
+
+
+Need internet connection
+- check with andrew if transport costs are for total weight, or per
+  item?
+- Check with andrew how the minimum costs work?
+- add error messages if a value from the form is missing
 - Update mailer to get to work
 - Fix Diametro to just show which options are valid for MIG / TIG
 - Get price per kg dynamically after diametro has been selected
-
+- Refactor into a form object

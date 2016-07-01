@@ -1,12 +1,12 @@
 = form_for @order do |f|
   = f.fields_for :items do |ff|
     = ff.label :tipo_grado
-    = ff.collection_select(:steel_type_id, SteelType.all, :id, :steel_type,{include_blank: 'Please select option'})
+    = ff.collection_select(:steel_type_id, SteelType.all, :id, :steel_type,{include_blank: 'Please select option'}, required: true)
     = ff.label :diametro
-    = ff.collection_select(:steel_width_id, SteelWidth.all, :id, :width,{include_blank: 'Please select option'})
+    = ff.collection_select(:steel_width_id, SteelWidth.all, :id, :width,{include_blank: 'Please select option'}, required: true)
     = ff.label :acabado
-    = ff.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'})
+    = ff.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'}, required: true) 
     = ff.label :volumen_kgs
-    = ff.number_field :volume
+    = ff.number_field :volume, required: true,  min: 1000
   = f.submit 'Add item to order'
 

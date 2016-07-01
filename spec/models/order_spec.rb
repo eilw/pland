@@ -4,6 +4,14 @@ describe Order, type: :model do
   it { is_expected.to belong_to :user }
   it { is_expected.to have_many :items }
 
+  describe 'validations' do
+    xit 'all items are deleted if an order is deleted' do
+      order = FactoryGirl.create(:order_with_items)
+      Order.delete(order)
+      expect(item).to eq(nil)
+    end
+  end
+  
   describe "#cost_transport" do
     it 'returns the value of the transport cost' do
       order = FactoryGirl.create(:order_with_items)

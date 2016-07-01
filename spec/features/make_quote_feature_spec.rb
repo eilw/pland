@@ -11,7 +11,9 @@ feature 'Make a quote' do
       
       transport_cost = 450
       total_cost = 3570
+      total_volume = 1000
 
+      expect(page).to have_content("Total volume: #{total_volume}")
       expect(page).to have_content("Transport: #{transport_cost}")
       expect(page).to have_content("Total cost: #{total_cost}")
 

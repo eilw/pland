@@ -10,10 +10,12 @@ class Order < ActiveRecord::Base
     band_d: 0.15
   }
 
-  def cost_transport
-    volume = calculate_volume
+  def total_volume
+    get_items.inject(0){ |sum,item| sum += item.volume}
+  end
 
-    volume * price_per_kg(volume)
+  def cost_transport
+    total_volume * price_per_kg(total_volume)
   end
 
   def cost_total
@@ -40,7 +42,4 @@ class Order < ActiveRecord::Base
     self.items.all
   end
 
-  def calculate_volume
-    get_items.inject(0){ |sum,item| sum += item.volume}
-  end
 end
