@@ -68,13 +68,11 @@ Todo:
   - user must be logged in to see the various orders / quotes - DONE
 - add validation for minimum volume of 1000kg - DONE
 - add total volume to order - DONE
-- add comment field to order
-
-
-
+- add comment field to order - DONE
 
 
 Need internet connection
+- add validations to if order cannot be received
 - check with andrew if transport costs are for total weight, or per
   item?
 - Check with andrew how the minimum costs work?

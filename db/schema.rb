@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160624161041) do
     t.decimal  "transport_cost"
     t.decimal  "cost"
     t.string   "status",         default: "draft"
+    t.text     "comment"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree

@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  it { is_expected.to have_many :orders }
+  it { is_expected.to have_many(:orders).dependent(:destroy) }
 end
