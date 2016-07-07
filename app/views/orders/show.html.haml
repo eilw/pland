@@ -13,6 +13,11 @@
   = f.number_field :volume
   = f.submit 'Add item to order'
 
+= form_for(@order, url: order_path(@order), html: {method: :put}) do |f| 
+  = f.label :comment
+  = f.text_field :comment
+  = f.submit 'Update comment'
+
 = render @order.items
 = render @order
 

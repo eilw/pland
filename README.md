@@ -69,9 +69,13 @@ Todo:
 - add validation for minimum volume of 1000kg - DONE
 - add total volume to order - DONE
 - add comment field to order - DONE
-
+- add thanks message for new quote - DONE
+- User can see the comment they have added, and can edit that specific
+  - DONE
 
 Need internet connection
+  box
+- add in thanks message for new account 
 - add validations to if order cannot be received
 - check with andrew if transport costs are for total weight, or per
   item?

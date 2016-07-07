@@ -1,11 +1,9 @@
 require 'rails_helper'
+require_relative './helpers/users'
 
-# feature 'restaurants' do
-#   context 'no restaurants have been added' do
-#     scenario 'should display a prompt to add a restaurant' do
-#       visit '/restaurants'
-#       expect(page).to have_content 'No restaurants yet'
-#       expect(page).to have_link 'Add a restaurant'
-#     end
-#   end
-# end
+feature 'sign up' do
+    scenario 'A user gets a greetings message after signed up a new account' do
+      sign_up
+      expect(page).to have_content('Gracias por crear una cuenta')
+    end
+end
