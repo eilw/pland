@@ -29,10 +29,18 @@ class OrdersController < ApplicationController
 
   def update
     order = Order.find(params.fetch(:id))
-    order.update(status: params[:status]) if params[:status] 
     update_costs(order)
+    if params[:order]
+      order.update(order_params)
+      redirect_to order_path(order)
+    elsif params[:status]
+      order.update(status: params[:status])
+      flash[:notice] = 'Gracias por solicitar una confirmación de orden. Estaremos en contacto dentro de 48 horas para confirmar los detalles.'
 
-    redirect_to orders_path
+      redirect_to orders_path
+    else
+      redirect_to orders_path
+    end
   end
 
   def destroy 
@@ -49,6 +57,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:status, :items_attributes => [ :steel_type_id, :steel_width_id, :steel_finish_id, :cost, :volume, :price_kg, :order_id])
+    params.require(:order).permit(:status, :comment, :items_attributes => [ :steel_type_id, :steel_width_id, :steel_finish_id, :cost, :volume, :price_kg, :order_id])
   end
 end

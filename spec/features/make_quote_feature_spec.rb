@@ -3,23 +3,38 @@ require_relative './helpers/users'
 require_relative './helpers/quotes'
 
 feature 'Make a quote' do
-    scenario 'A user can select the steel options and see the price' do
-      sign_up
-      make_quote
-      transport_cost = 450
-      total_cost = 3570
-      total_volume = 1000
+  scenario 'A user can select the steel options and see the price' do
+    sign_up
+    make_quote
+    transport_cost = 450
+    total_cost = 3570
+    total_volume = 1000
 
-      expect(page).to have_content('3.12')
-      expect(page).to have_content('Order saved')
-      expect(page).to have_content("Total volume: #{total_volume}")
-      expect(page).to have_content("Transport: #{transport_cost}")
-      expect(page).to have_content("Total cost: #{total_cost}")
+    expect(page).to have_content('3.12')
+    expect(page).to have_content('Order saved')
+    expect(page).to have_content("Total volume: #{total_volume}")
+    expect(page).to have_content("Transport: #{transport_cost}")
+    expect(page).to have_content("Total cost: #{total_cost}")
 
-      click_link('Save quote')
-      expect(current_path).to eq(orders_path)
-      expect(page).to have_content("Total cost: #{total_cost}")
-    end
+    click_link('Save quote')
+
+    expect(current_path).to eq(orders_path)
+    expect(page).to have_content("Total cost: #{total_cost}")
+  end
+end
+
+feature 'Edit a quote' do
+  scenario 'A user can edit the comment box' do
+    sign_up
+    make_quote
+
+    expect(page).to have_field('order_comment', with: 'My comment')
+
+    fill_in('order_comment', with: 'Updated comment')
+    click_button('Update comment')
+
+    expect(page).to have_field('order_comment', with: 'Updated comment')
+  end
 end
 
 feature 'Request a quote' do
@@ -27,7 +42,9 @@ feature 'Request a quote' do
     sign_up
     make_quote
     click_link('Request quote')
+
     expect(page).to have_content('status is: Requested')
+    expect(page).to have_content('Gracias por solicitar')
   end
 end
 
@@ -36,6 +53,7 @@ feature 'Delete a quote' do
     sign_up
     make_quote
     click_link('Cancel quote')
+
     expect(page).to have_content('Order deleted')
     expect(current_path).to eq(account_path)
   end
