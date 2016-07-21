@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :authenticatable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :orders, dependent: :destroy
+  validates :name, presence: true
+  validates :company, presence: true
+  validates :country, presence: true
+  validates :phone_num, presence: true
 
   def active_for_authentication?
     super && approved?

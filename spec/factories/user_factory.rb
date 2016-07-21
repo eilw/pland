@@ -1,5 +1,9 @@
 FactoryGirl.define do
   factory :user, class: User do
+    name 'Name'
+    company 'Empresa'
+    country 'Pais'
+    phone_num '12345678'
     email 'test@test.com'
     password '123456'
     created_at Time.now

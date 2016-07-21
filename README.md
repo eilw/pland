@@ -60,20 +60,18 @@ Todo:
 - add a edit button for each item - DONE
 - Add tests that were deleted for make a quote - DONE
 - Add tests & validations to order and the item - DONE
-  - Delete all child instances of parent instances (e.g. users / orders,
-    etc) - DONE
-  - All items must have one of the options selected, including volume
-    - DONE
+  - Delete all child instances of parent instances (e.g. users / orders, etc) - DONE
+  - All items must have one of the options selected, including volume- DONE
   - volume must be a minimum of 1000kg? DONE
   - user must be logged in to see the various orders / quotes - DONE
 - add validation for minimum volume of 1000kg - DONE
 - add total volume to order - DONE
 - add comment field to order - DONE
 - add thanks message for new quote - DONE
-- User can see the comment they have added, and can edit that specific
-  - DONE
+- User can see the comment they have added, and can edit that specific - DONE
+- add account functionality for Andrew - DONE
 
-- add account functionality for Andrew
+- add validations for sign-up: frontend & backend - Done
 - Update mailer to get to work
 - add in thanks message for new account 
 - add validations to if order cannot be received
@@ -84,3 +82,5 @@ Todo:
 - Fix Diametro to just show which options are valid for MIG / TIG
 - Get price per kg dynamically after diametro has been selected
 - Refactor into a form object
+- Update CI to work
+- Add in PDF option for old quotes
