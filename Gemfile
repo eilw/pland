@@ -38,6 +38,10 @@ gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+#
+group :production do
+  gem 'rails_12factor'
+end
 
 group :test do
   gem 'rspec-rails'
