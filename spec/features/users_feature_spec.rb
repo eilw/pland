@@ -15,16 +15,22 @@ feature "User can sign in and out" do
     end
   end
 
+  context 'signing up' do
+    scenario 'A user does not get access until approved by admin' do
+      sign_up
+      expect(page).to have_content('You have signed up successfully but your account has not been approved by your administrator yet')
+    end
+  end
+
   context "user logged in on the homepage" do
     scenario "should see 'Log out' link" do
-      sign_up
+      login_approved_user_factory_girl
       visit('/')
       expect(page).to have_link('Log out')
     end
 
     scenario "should not see a 'Log in' link and a 'sign up' link" do
-      sign_up
-      visit('/')
+      login_approved_user_factory_girl
       expect(page).not_to have_link('Log in')
       expect(page).not_to have_link('Sign up')
     end

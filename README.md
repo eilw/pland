@@ -73,15 +73,14 @@ Todo:
 - User can see the comment they have added, and can edit that specific
   - DONE
 
-Need internet connection
-  box
+- add account functionality for Andrew
+- Update mailer to get to work
 - add in thanks message for new account 
 - add validations to if order cannot be received
 - check with andrew if transport costs are for total weight, or per
   item?
 - Check with andrew how the minimum costs work?
 - add error messages if a value from the form is missing
-- Update mailer to get to work
 - Fix Diametro to just show which options are valid for MIG / TIG
 - Get price per kg dynamically after diametro has been selected
 - Refactor into a form object

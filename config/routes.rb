@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  resources :users, only: [:index, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -13,17 +14,11 @@ Rails.application.routes.draw do
   resources :contacts, only: [:index, :create]
   resources :about, only: [:index]
   resources :products, only: [:index]
-  resources :users
-  resource :account, only: [:show] 
+  resource :admin, only: [:users]
+  resource :account, only: [:show, :index]
   resources :orders, only: [:create,:new, :show, :update, :index, :destroy], shallow: true do
     resources :items, only: [:create, :new, :edit, :update]
   end
-
-
-
-
-
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
