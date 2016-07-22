@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.update(approved: true)
     flash[:notice] = "#{user.email} approved"
+
     redirect_to users_path
   end
 end

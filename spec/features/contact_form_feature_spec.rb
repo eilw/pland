@@ -1,6 +1,9 @@
 require 'rails_helper'
 
-feature 'contact form' do
+feature 'Contact form' do
+  # Needs an admin to be sent confirmation of contact form
+  before(:each) { FactoryGirl.create(:user, :admin) }
+
     scenario 'A user can send in a request to be contacted' do
       visit '/'
       fill_in('contact_name',with: 'test')

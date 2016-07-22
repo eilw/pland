@@ -1,17 +1,7 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  attributes = {
-    name: 'Name',
-    company: 'Empresa',
-    country: 'Pais',
-    phone_num: '12345678',
-    email: 'test@email.com',
-    password: 'password',
-    password_confirmation: 'password'
-  }
-
-  let(:user_attributes) { attributes }
+  let(:user_attributes) { FactoryGirl.attributes_for(:user) }
 
   describe 'validations' do
     it { is_expected.to have_many(:orders).dependent(:destroy) }

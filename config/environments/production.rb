@@ -1,13 +1,14 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.default_url_options = { host: 'pland-beta.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'pland-beta.herokuapp.com', #eg: 'yourappname.herokuapp.com'
+  ActionMailer::Base.smtp_settings = {
+    :port           => 587,
+    :address        => "smtp.mailgun.org",
+    :domain         => ENV['mailgun_domain'],
+    :user_name      => ENV['mailgun_username'],
+    :password       => ENV['mailgun_password'],
     :authentication => :plain,
   }
 

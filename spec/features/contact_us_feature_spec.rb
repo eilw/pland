@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'contact us' do
+feature 'Contact us' do
     scenario 'A user can access the contact us page' do
       visit '/'
       click_link('Contacto')

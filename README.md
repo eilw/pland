@@ -70,9 +70,15 @@ Todo:
 - add thanks message for new quote - DONE
 - User can see the comment they have added, and can edit that specific - DONE
 - add account functionality for Andrew - DONE
-
 - add validations for sign-up: frontend & backend - Done
-- Update mailer to get to work
+
+- Update mailer to get to work - DONE
+  - Add a mail to be sent to andrew once a user has signed up - DONE
+  - sendt the contact form to andrew - DONE
+  - add tests to mailers - DONE
+  - make it work on heroku
+  - get the resend password to work on heroku
+  - change title of resend email 
 - add in thanks message for new account 
 - add validations to if order cannot be received
 - check with andrew if transport costs are for total weight, or per
@@ -84,3 +90,6 @@ Todo:
 - Refactor into a form object
 - Update CI to work
 - Add in PDF option for old quotes
+- Change how you can intereact with orders given their order status
+- Admin dealing with orders
+

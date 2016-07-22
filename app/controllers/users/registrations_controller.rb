@@ -8,9 +8,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #   end
 #
 #   POST /resource
-#   def create
-#     super
-#   end
+   def create
+     super
+     if @user.persisted?
+       UserMailer.request_approval_email(@user).deliver_now
+     end
+   end
 #
 #   GET /resource/edit
 #   def edit

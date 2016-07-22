@@ -3,8 +3,8 @@ require_relative './helpers/users'
 
 feature 'An admin can approve other users' do
   scenario 'An admin login and approves a user' do
-    FactoryGirl.create(:user)
     admin = FactoryGirl.create(:user, :admin)
+    FactoryGirl.create(:user)
     login_as(admin, scope: :user)
     visit('/')
     click_link('Mi cuenta')

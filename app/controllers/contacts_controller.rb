@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    ContactMailer.send_form_info(@contact).deliver_now
+    ContactFormMailer.send_form_info_email(@contact).deliver_now
     flash[:notice] = "Gracias por su mensaje – estaremos en contacto dentro de 48 horas."
     redirect_to home_index_path
   end
