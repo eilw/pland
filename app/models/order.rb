@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   has_many :items, dependent: :destroy
-  accepts_nested_attributes_for :items
+  #accepts_nested_attributes_for :items
 
   TRANSPORT_COST = {
     band_a: 0.45,
@@ -27,7 +27,7 @@ class Order < ActiveRecord::Base
 
   def price_per_kg(volume)
     case volume
-    when 1..1999
+    when 0..1999
       TRANSPORT_COST[:band_a]
     when 2000..4999
       TRANSPORT_COST[:band_b]

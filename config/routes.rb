@@ -16,8 +16,12 @@ Rails.application.routes.draw do
   resources :products, only: [:index]
   resource :admin, only: [:users]
   resource :account, only: [:show, :index]
-  resources :orders, only: [:create,:new, :show, :update, :index, :destroy], shallow: true do
-    resources :items, only: [:create, :new, :edit, :update]
+  resources :quotes, only: [:new, :create] do
+    get 'price', on: :collection
+    post 'add_item', on: :collection
+  end
+  resources :orders, only: [:show, :update, :index, :destroy], shallow: true do
+    resources :items, only: [:edit, :update]
   end
 
   # Example of regular route:

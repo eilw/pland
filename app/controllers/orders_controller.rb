@@ -5,26 +5,9 @@ class OrdersController < ApplicationController
     @orders = current_user.orders
   end
 
-  def new
-    @order = Order.new
-    @order.items.build
-  end
-
   def show
+    @quote = Quote.new()
     @order = Order.find(params.fetch(:id))
-    @item = Item.new
-  end
-
-  def create
-    order = current_user.orders.build(order_params)
-    order.items.first.add_price_kg
-    if order.save
-      flash[:notice] = 'Order saved'
-      redirect_to order_path(order)
-    else
-      flash[:notice] = 'Order not saved'
-      redirect_to new_order_path
-    end
   end
 
   def update

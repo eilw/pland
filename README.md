@@ -2,40 +2,6 @@
 
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-
-
-Order has many items, cost (decimal), volume(integer), shipping cost(decimal), total cost, status
-
-Item has a steel_type, steel_width, steel_finish, volume(integer), price_per_kg (to be calculated), cost
-
-Steel_type has type type-grade-ls/, cost
-
-Steel_finish has type, cost
-
 Todo:
 - On order page, add link to submit items. - DONE
 - Item - give spaces for volume - DONE
@@ -71,25 +37,33 @@ Todo:
 - User can see the comment they have added, and can edit that specific - DONE
 - add account functionality for Andrew - DONE
 - add validations for sign-up: frontend & backend - Done
-
 - Update mailer to get to work - DONE
   - Add a mail to be sent to andrew once a user has signed up - DONE
   - sendt the contact form to andrew - DONE
   - add tests to mailers - DONE
-  - make it work on heroku
-  - get the resend password to work on heroku
-  - change title of resend email 
+
+- Get price per kg dynamically after diametro has been selected - DONE
+- Refactor into a form object - DONE
+- See updated price in each view (item / order) - DONE
+- Change validation of item to 100kg - DONE
+- Add additional types of transport
+- Add dynamic forms for type / grade / diameter / transport
+   - Type impacts grade and diameter -> thats it
+   - Finish and transport remain the same
+
+- Add possibility to delete an item
+- Remove existing orders link
+- See the cost of transport per kg under the total cost of transport
+- Add validation of total order to 1000kg
+- add tests for updating an item
+- add tests for adding an item to the order
 - add in thanks message for new account 
 - add validations to if order cannot be received
-- check with andrew if transport costs are for total weight, or per
-  item?
-- Check with andrew how the minimum costs work?
 - add error messages if a value from the form is missing
-- Fix Diametro to just show which options are valid for MIG / TIG
-- Get price per kg dynamically after diametro has been selected
-- Refactor into a form object
 - Update CI to work
 - Add in PDF option for old quotes
 - Change how you can intereact with orders given their order status
 - Admin dealing with orders
 
+- get the resend password to work on heroku
+- change title of resend email 

@@ -1,11 +1,25 @@
 FactoryGirl.define do
+  factory :steel_type, class: SteelType do
+    steel_type 'Mig307Si'
+    cost 2.82
+  end
+
+  factory :steel_finish do
+    cost 0.1
+    finish 'Gloss'
+  end
+
+  factory :steel_width do
+    width 0.8
+    cost 0.2
+  end
 
   factory :item, class: Item do
-    price_kg 1.00
+    price_kg 3.12
     volume 1000
-    steel_type_id 1
-    steel_finish_id 1 
-    steel_width_id 1
+    steel_type
+    steel_finish
+    steel_width
     order
   end
 
@@ -17,7 +31,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |order, evaluator|
-        create_list(:item, evaluator.items_count, order: order, volume: 1000, steel_type_id: 1, steel_finish_id: 1, steel_width_id: 1)
+        create_list(:item, evaluator.items_count, order: order, volume: 1000)
       end
     end
   end

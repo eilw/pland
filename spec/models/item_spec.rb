@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Item, type: :model do
-  let(:item){ FactoryGirl.create(:item) }
+  let!(:item){ FactoryGirl.create(:item) }
 
   describe 'belongs' do 
     it { is_expected.to belong_to :order }
@@ -21,8 +21,8 @@ describe Item, type: :model do
       expect(invalid_item).not_to be_valid
     end
 
-    it 'does not validate if volume is under 1000' do
-      invalid_item = Item.create(steel_type_id: 1, steel_finish_id: 1, steel_width_id: 1, volume: 900)
+    it 'does not validate if volume is under 100' do
+      invalid_item = Item.create(steel_type_id: 1, steel_finish_id: 1, steel_width_id: 1, volume: 90)
       expect(invalid_item).not_to be_valid
     end
 
@@ -35,14 +35,38 @@ describe Item, type: :model do
     it 'adds the price_kg to the item' do
       item.add_price_kg
       item.save!
-      expect(item.price_kg).to eq(3.02)
+      expect(item.price_kg).to eq(3.12)
     end
   end
 
   describe '#cost' do
     it 'returns the price per kg multiplied with the volume' do
       item.add_price_kg
-      expect(item.cost).to eq(3020)
+      expect(item.cost).to eq(3120)
+    end
+  end
+
+  describe '#price_kg' do
+    it 'calculates the price_kg based on params' do
+      params = {
+        "steel_type_id" => SteelType.all.first.id,
+        "steel_width_id" => SteelWidth.all.first.id,
+        "steel_finish_id" => SteelFinish.all.first.id
+      }
+      price_kg = Item.price_kg(params)
+
+      expect(price_kg).to eq(3.12)
+    end
+
+    it 'returns the current sum if an option is missing' do
+      missing_params = {
+        "steel_type_id" => SteelType.all.first.id,
+        "steel_width_id" => SteelWidth.all.first.id,
+        "steel_finish_id" => ""
+      }
+      price_kg = Item.price_kg(missing_params)
+
+      expect(price_kg).to eq(3.02)
     end
   end
 end

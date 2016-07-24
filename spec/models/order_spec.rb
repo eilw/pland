@@ -14,7 +14,7 @@ describe Order, type: :model do
   describe "#cost_total" do
     it 'returns the total cost of the order' do
       order = FactoryGirl.create(:order_with_items)
-      expect(order.cost_total).to eq(1450)
+      expect(order.cost_total).to eq(3570)
     end
   end
 

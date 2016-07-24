@@ -1,9 +1,38 @@
 require 'rails_helper'
 require_relative './helpers/users'
 require_relative './helpers/quotes'
+require_relative './helpers/wait_for_ajax'
+
 
 feature 'Quotes' do
-  feature 'Make a quote' do
+  feature 'Create a quote' do
+    scenario 'A user can see the price per kg change according to choices', js: true do
+      seed_steel_options
+
+      login_approved_user_factory_girl
+      click_link('Mi cuenta')
+      click_link('Crear cotización')
+      select('MIG-307Si', from: 'quote_steel_type_id')
+      select('0.8', from: 'quote_steel_width_id')
+      select('Gloss', from: 'quote_steel_finish_id')
+
+      wait_for_ajax
+      expect(page).to have_content('3.12')
+
+      select('Matt', from: 'quote_steel_finish_id')
+
+      wait_for_ajax
+      expect(page).to have_content('3.02')
+    end
+
+    xscenario 'A user can add a new item to the order' do
+    end
+
+    xscenario 'A user can update the item' do
+    end
+  end
+
+  feature 'Save a quote' do
     scenario 'A user can select the steel options and see the price' do
       login_approved_user_factory_girl
       make_quote

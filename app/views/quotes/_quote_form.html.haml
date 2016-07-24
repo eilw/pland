@@ -1,0 +1,14 @@
+= f.label :tipo_grado
+= f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type,{include_blank: 'Please select option'}, required: true, class: 'steel-selection')
+= f.label :diametro
+= f.collection_select(:steel_width_id, SteelWidth.all, :id, :width,{include_blank: 'Please select option'}, required: true, class: 'steel-selection')
+= f.label :acabado
+= f.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'}, required: true, class: 'steel-selection') 
+
+$
+%span.price-kg 
+  = @item ? @item.price_kg : 0.00
+per kg
+
+= f.label :volumen_kgs
+= f.number_field :volume, required: true,  min: 100, class: 'steel-selection'

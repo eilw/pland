@@ -1,15 +1,5 @@
 = form_for  @item do |f|
+  = render partial: "/quotes/quote_form", :locals => { :f=>f, :@item=> @item }
 
-  = f.label :tipo_e_grado
-  = f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type)
-  
-  = f.label :diametro
-  = f.collection_select(:steel_width_id, SteelWidth.all, :id, :width,{include_blank: 'Please select option'})
-
-  = f.label :acabado
-  = f.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'})
-
-  = f.label :volume_kgs
-  = f.number_field :volume
   = f.submit 'Add item to order'
 
