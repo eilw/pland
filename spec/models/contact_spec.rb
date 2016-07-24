@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe Contact do
   describe 'validates contact info' do
-
     it 'the fields can be added to' do
       valid_attrs = {
         name: 'test',
@@ -14,7 +13,6 @@ describe Contact do
       }
       info = Contact.new(valid_attrs)
       expect(info).to be_valid
-
     end
   end
 end

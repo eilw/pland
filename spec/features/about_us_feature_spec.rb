@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'about us' do
+feature 'About us' do
     scenario 'A user can access the about us page and read contents' do
       visit '/'
       click_link('Sobre nosotros')

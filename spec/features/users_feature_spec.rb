@@ -16,6 +16,9 @@ feature "User can sign in and out" do
   end
 
   context 'signing up' do
+    # Need an admin for approval email to be sent to
+    before{ FactoryGirl.create(:user, :admin) }
+
     scenario 'A user does not get access until approved by admin' do
       sign_up
       expect(page).to have_content('You have signed up successfully but your account has not been approved by your administrator yet')

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'products' do
+feature 'Products' do
     scenario 'A user can access the products page and read contents' do
       visit '/'
       click_link('Productos')
