@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708132444) do
+ActiveRecord::Schema.define(version: 20160812125737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,10 +25,12 @@ ActiveRecord::Schema.define(version: 20160708132444) do
     t.integer  "steel_type_id"
     t.integer  "steel_width_id"
     t.integer  "steel_finish_id"
+    t.integer  "steel_grade_id"
   end
 
   add_index "items", ["order_id"], name: "index_items_on_order_id", using: :btree
   add_index "items", ["steel_finish_id"], name: "index_items_on_steel_finish_id", using: :btree
+  add_index "items", ["steel_grade_id"], name: "index_items_on_steel_grade_id", using: :btree
   add_index "items", ["steel_type_id"], name: "index_items_on_steel_type_id", using: :btree
   add_index "items", ["steel_width_id"], name: "index_items_on_steel_width_id", using: :btree
 
@@ -51,20 +53,31 @@ ActiveRecord::Schema.define(version: 20160708132444) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "steel_grades", force: :cascade do |t|
+    t.string   "grade"
+    t.decimal  "cost"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "steel_type_id"
+  end
+
+  add_index "steel_grades", ["steel_type_id"], name: "index_steel_grades_on_steel_type_id", using: :btree
+
   create_table "steel_types", force: :cascade do |t|
     t.string   "steel_type"
-    t.decimal  "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "steel_widths", force: :cascade do |t|
-    t.string   "steel_type"
     t.decimal  "width"
     t.decimal  "cost"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "steel_type_id"
   end
+
+  add_index "steel_widths", ["steel_type_id"], name: "index_steel_widths_on_steel_type_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -93,7 +106,10 @@ ActiveRecord::Schema.define(version: 20160708132444) do
 
   add_foreign_key "items", "orders"
   add_foreign_key "items", "steel_finishes"
+  add_foreign_key "items", "steel_grades"
   add_foreign_key "items", "steel_types"
   add_foreign_key "items", "steel_widths"
   add_foreign_key "orders", "users"
+  add_foreign_key "steel_grades", "steel_types"
+  add_foreign_key "steel_widths", "steel_types"
 end

@@ -1,7 +1,10 @@
 %p
 = div_for item do
-  Steel type: 
+  Steel type:
   = SteelType.find(item.steel_type_id).steel_type
+
+  Steel grade
+  = SteelGrade.find(item.steel_grade_id).grade
 
   Steel finish:
   = SteelFinish.find(item.steel_finish_id).finish

@@ -1,7 +1,9 @@
-= f.label :tipo_grado
-= f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type,{include_blank: 'Please select option'}, required: true, class: 'steel-selection')
+= f.label :tipo
+= f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type,{include_blank: 'Please select option'}, required: true)
+= f.label :_grado
+= f.grouped_collection_select(:steel_grade_id, SteelType.all, :steel_grade_options, :steel_type, :id, :grade, {include_blank: 'Please select option'}, required: true, class: 'steel-selection')
 = f.label :diametro
-= f.collection_select(:steel_width_id, SteelWidth.all, :id, :width,{include_blank: 'Please select option'}, required: true, class: 'steel-selection')
+= f.grouped_collection_select(:steel_width_id, SteelType.all, :steel_width_options, :steel_type, :id, :width,{include_blank: 'Please select option'}, required: true, class: 'steel-selection')
 = f.label :acabado
 = f.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'}, required: true, class: 'steel-selection') 
 

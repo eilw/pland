@@ -5,28 +5,32 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+steel_types_list = %w(MIG TIG)
 
-width_list = [
-  ['MIG', 0.8, 0.2],
-  ['MIG', 0.9, 0.2],
-  ['MIG', 1.0, 0.1],
-  ['MIG', 1.1, 0.1],
-  ['MIG', 1.2, 0.0],
-  ['MIG', 1.3, 0.0],
-  ['MIG', 1.4, 0.0],
-  ['MIG', 1.5, 0.0],
-  ['MIG', 1.6, 0.0],
-  ['TIG', 1.6, 0.2],
-  ['TIG', 1.8, 0.2],
-  ['TIG', 2.0, 0.1],
-  ['TIG', 2.2, 0.1],
-  ['TIG', 2.4, 0.0],
-  ['TIG', 2.6, 0.0],
-  ['TIG', 2.8, 0.0],
-  ['TIG', 3.0, 0.0],
-  ['TIG', 3.2, 0.0],
-  ['TIG', 3.4, 0.0],
-  ['TIG', 3.6, 0.0]
+width_mig_list = [
+  [0.8, 0.2],
+  [0.9, 0.2],
+  [1.0, 0.1],
+  [1.1, 0.1],
+  [1.2, 0.0],
+  [1.3, 0.0],
+  [1.4, 0.0],
+  [1.5, 0.0],
+  [1.6, 0.0]
+]
+
+width_tig_list = [
+  [1.6, 0.2],
+  [1.8, 0.2],
+  [2.0, 0.1],
+  [2.2, 0.1],
+  [2.4, 0.0],
+  [2.6, 0.0],
+  [2.8, 0.0],
+  [3.0, 0.0],
+  [3.2, 0.0],
+  [3.4, 0.0],
+  [3.6, 0.0]
 ]
 
 finish_list = [
@@ -34,36 +38,54 @@ finish_list = [
   ['Gloss', 0.1]
 ]
 
-steel_types_list = [
-  ["MIG-307Si", 2.82],
-["MIG-ER308L", 2.77],
-["MIG-ER308Lsi", 2.87],
-["MIG-ER309L", 3.29],
-["MIG-ER309Lsi", 3.39],
-["MIG-ER316L", 3.30],
-["MIG-ER316LSi", 3.40],
-["MIG-ER310", 4.28],
-["MIG-ER347", 3.47],
-["TIG-307Si", 2.62],
-["TIG-ER308L", 2.57],
-["TIG-ER308LSi", 2.67],
-["TIG-ER309LSi", 3.14],
-["TIG-ER309Lsi", 3.24],
-["TIG-ER316L", 3.20],
-["TIG-ER316Lsi", 3.30],
-["TIG-ER310", 4.18],
-["TIG-ER347", 3.37],
-["TIG-ER312", 4.37]
+steel_grade_mig_list = [
+  ['307Si', 2.82],
+  ['ER308L', 2.77],
+  ['ER308Lsi', 2.87],
+  ['ER309L', 3.29],
+  ['ER309Lsi', 3.39],
+  ['ER316L', 3.30],
+  ['ER316LSi', 3.40],
+  ['ER310', 4.28],
+  ['ER347', 3.47]
 ]
 
-width_list.each do |type, width, cost|
-  SteelWidth.create(steel_type: type, width: width, cost: cost)
+steel_grade_tig_list = [
+  ['307Si', 2.62],
+  ['ER308L', 2.57],
+  ['ER308LSi', 2.67],
+  ['ER309LSi', 3.14],
+  ['ER309Lsi', 3.24],
+  ['ER316L', 3.20],
+  ['ER316Lsi', 3.30],
+  ['ER310', 4.18],
+  ['ER347', 3.37],
+  ['ER312', 4.37]
+]
+
+steel_types_list.each do |type|
+  SteelType.create(steel_type: type)
 end
 
-finish_list.each do |finish, cost |
+mig = SteelType.all.first
+tig = SteelType.all.last
+
+width_mig_list.each do |width, cost|
+  mig.steel_widths.create(width: width, cost: cost)
+end
+
+width_tig_list.each do |width, cost|
+  tig.steel_widths.create(width: width, cost: cost)
+end
+
+finish_list.each do |finish, cost|
   SteelFinish.create(finish: finish, cost: cost)
 end
 
-steel_types_list.each do |steel_type, cost |
-  SteelType.create(steel_type: steel_type, cost: cost)
+steel_grade_mig_list.each do |grade, cost|
+  mig.steel_grades.create(grade: grade, cost: cost)
+end
+
+steel_grade_tig_list.each do |grade, cost|
+  tig.steel_grades.create(grade: grade, cost: cost)
 end

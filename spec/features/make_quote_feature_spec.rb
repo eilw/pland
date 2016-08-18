@@ -12,28 +12,43 @@ feature 'Quotes' do
       login_approved_user_factory_girl
       click_link('Mi cuenta')
       click_link('Crear cotización')
-      select('MIG-307Si', from: 'quote_steel_type_id')
+      select('MIG', from: 'quote_steel_type_id')
+      select('307Si', from: 'quote_steel_grade_id')
       select('0.8', from: 'quote_steel_width_id')
       select('Gloss', from: 'quote_steel_finish_id')
 
-      wait_for_ajax
       expect(page).to have_content('3.12')
 
       select('Matt', from: 'quote_steel_finish_id')
 
-      wait_for_ajax
       expect(page).to have_content('3.02')
     end
 
-    xscenario 'A user can add a new item to the order' do
+    scenario 'A user can add a new item to the order', js: true do
+      login_approved_user_factory_girl
+      make_quote
+      add_item
+
+      total_volume = 2000
+
+      expect(page).to have_content("Total volume: #{total_volume}")
     end
 
-    xscenario 'A user can update the item' do
+    scenario 'A user can update the item', js: true do
+      login_approved_user_factory_girl
+      make_quote
+      expect(page).to have_content('3.12')
+
+      click_link('Change item')
+      select('Matte', from: 'item_steel_finish_id')
+      click_button('Add item to order')
+
+      expect(page).to have_content('3.02')
     end
   end
 
   feature 'Save a quote' do
-    scenario 'A user can select the steel options and see the price' do
+    scenario 'A user can select the steel options and see the price', js: true do
       login_approved_user_factory_girl
       make_quote
       transport_cost = 450
@@ -54,7 +69,7 @@ feature 'Quotes' do
   end
 
   feature 'Edit a quote' do
-    scenario 'A user can edit the comment box' do
+    scenario 'A user can edit the comment box', js: true do
       login_approved_user_factory_girl
       make_quote
 
@@ -68,7 +83,7 @@ feature 'Quotes' do
   end
 
   feature 'Request a quote' do
-    scenario 'A user can submit a quote' do
+    scenario 'A user can submit a quote', js: true do
       login_approved_user_factory_girl
       make_quote
       click_link('Request quote')
@@ -79,7 +94,7 @@ feature 'Quotes' do
   end
 
   feature 'Delete a quote' do
-    scenario 'A user can delete a quote' do
+    scenario 'A user can delete a quote', js: true do
       login_approved_user_factory_girl
       make_quote
       click_link('Cancel quote')

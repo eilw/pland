@@ -40,6 +40,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:status, :comment, :items_attributes => [ :steel_type_id, :steel_width_id, :steel_finish_id, :cost, :volume, :price_kg, :order_id])
+    params.require(:order).permit(:status, :comment, :items_attributes => [ :steel_type_id, :steel_grade_id, :steel_width_id, :steel_finish_id, :cost, :volume, :price_kg, :order_id])
   end
 end

@@ -1,5 +1,4 @@
-= form_for  @item do |f|
+= form_for @item do |f|
   = render partial: "/quotes/quote_form", :locals => { :f=>f, :@item=> @item }
 
   = f.submit 'Add item to order'
-

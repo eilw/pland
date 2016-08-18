@@ -46,10 +46,12 @@ Todo:
 - Refactor into a form object - DONE
 - See updated price in each view (item / order) - DONE
 - Change validation of item to 100kg - DONE
+- Add dynamic forms for type / grade / diameter - DONE 
+- only update price when all three dropdowns have been selected
 - Add additional types of transport
-- Add dynamic forms for type / grade / diameter / transport
-   - Type impacts grade and diameter -> thats it
-   - Finish and transport remain the same
+- Error -no admin = nil when first user is created
+- Fix nil error in order cost + add other validation
+- add formobject validations
 
 - Add possibility to delete an item
 - Remove existing orders link
@@ -64,6 +66,8 @@ Todo:
 - Add in PDF option for old quotes
 - Change how you can intereact with orders given their order status
 - Admin dealing with orders
+- change name in submit box for item
 
 - get the resend password to work on heroku
 - change title of resend email 
+- ADMIN: update prices for steel database

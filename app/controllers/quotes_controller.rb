@@ -34,6 +34,6 @@ class QuotesController < ApplicationController
 
   private 
   def quote_params
-    params.require(:quote).permit(:status, :comment, :steel_type_id, :steel_width_id, :steel_finish_id, :cost, :volume, :price_kg, :user, :order_id).merge(user: current_user)
+    params.require(:quote).permit(:status, :comment, :steel_type_id, :steel_grade_id, :steel_width_id, :steel_finish_id, :cost, :volume, :price_kg, :user, :order_id).merge(user: current_user)
   end
 end
