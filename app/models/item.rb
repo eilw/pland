@@ -1,5 +1,3 @@
-require('no_item')
-
 class Item < ActiveRecord::Base
   validates :steel_type, presence: true
   validates :steel_grade, presence: true
@@ -15,11 +13,13 @@ class Item < ActiveRecord::Base
   belongs_to :steel_grade
 
   def add_price_kg
-    cost_grade = SteelGrade.find(self.steel_grade_id).cost
-    cost_width = SteelWidth.find(self.steel_width_id).cost
-    cost_finish = SteelFinish.find(self.steel_finish_id).cost
+    grade = SteelGrade.find_by(id: steel_grade_id)
+    width = SteelWidth.find_by(id: steel_width_id)
+    finish = SteelFinish.find_by(id: steel_finish_id)
 
-    self.price_kg = cost_grade + cost_width + cost_finish
+    if grade && width && finish
+      self.price_kg = grade.cost + width.cost + finish.cost
+    end
   end
 
   def cost
@@ -27,10 +27,14 @@ class Item < ActiveRecord::Base
   end
 
   def self.price_kg(params)
-    grade = SteelGrade.find_by(id: params["steel_grade_id"]) || NoItem.new
-    width = SteelWidth.find_by(id: params["steel_width_id"]) || NoItem.new
-    finish = SteelFinish.find_by(id: params["steel_finish_id"]) || NoItem.new
+    grade = SteelGrade.find_by(id: params['steel_grade_id'])
+    width = SteelWidth.find_by(id: params['steel_width_id'])
+    finish = SteelFinish.find_by(id: params['steel_finish_id'])
 
-    grade.cost + width.cost + finish.cost
+    if grade && width && finish
+      grade.cost + width.cost + finish.cost
+    else
+      0
+    end
   end
 end

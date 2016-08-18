@@ -47,6 +47,7 @@ Todo:
 - See updated price in each view (item / order) - DONE
 - Change validation of item to 100kg - DONE
 - Add dynamic forms for type / grade / diameter - DONE 
+
 - only update price when all three dropdowns have been selected
 - Add additional types of transport
 - Error -no admin = nil when first user is created

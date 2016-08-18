@@ -15,6 +15,7 @@ feature 'Quotes' do
       select('MIG', from: 'quote_steel_type_id')
       select('307Si', from: 'quote_steel_grade_id')
       select('0.8', from: 'quote_steel_width_id')
+      expect(page).to have_content('0')
       select('Gloss', from: 'quote_steel_finish_id')
 
       expect(page).to have_content('3.12')

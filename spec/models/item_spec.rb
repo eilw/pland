@@ -59,7 +59,7 @@ describe Item, type: :model do
       expect(price_kg).to eq(3.12)
     end
 
-    it 'returns the current sum if an option is missing' do
+    it 'returns the 0 if an option is missing' do
       missing_params = {
         'steel_grade_id' => SteelGrade.all.first.id,
         'steel_width_id' => SteelWidth.all.first.id,
@@ -67,7 +67,7 @@ describe Item, type: :model do
       }
       price_kg = Item.price_kg(missing_params)
 
-      expect(price_kg).to eq(3.02)
+      expect(price_kg).to eq(0)
     end
   end
 end
