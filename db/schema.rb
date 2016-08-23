@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812125737) do
+ActiveRecord::Schema.define(version: 20160819133730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160812125737) do
     t.decimal  "cost"
     t.string   "status",         default: "draft"
     t.text     "comment"
+    t.string   "transport_type"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -78,6 +79,14 @@ ActiveRecord::Schema.define(version: 20160812125737) do
   end
 
   add_index "steel_widths", ["steel_type_id"], name: "index_steel_widths_on_steel_type_id", using: :btree
+
+  create_table "transport_types", force: :cascade do |t|
+    t.string   "transport_type"
+    t.integer  "range_start"
+    t.decimal  "cost"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

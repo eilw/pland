@@ -63,6 +63,18 @@ steel_grade_tig_list = [
   ['ER312', 4.37]
 ]
 
+transport_types_list = [
+  ['Ex works', 0, 0],
+  ['CIF', 1000, 0.45],
+  ['CIF', 2000, 0.3],
+  ['CIF', 5_000, 0.25],
+  ['CIF', 20_000, 0.15],
+  ['FOB', 1000, 0.25],
+  ['FOB', 2000, 0.15],
+  ['FOB', 5_000, 0.10],
+  ['FOB', 20_000, 0.05]
+]
+
 steel_types_list.each do |type|
   SteelType.create(steel_type: type)
 end
@@ -88,4 +100,10 @@ end
 
 steel_grade_tig_list.each do |grade, cost|
   tig.steel_grades.create(grade: grade, cost: cost)
+end
+
+transport_types_list.each do |type, range_start, cost|
+  TransportType.create(transport_type: type,
+                       range_start: range_start,
+                       cost: cost)
 end

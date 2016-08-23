@@ -1,17 +1,25 @@
 = form_for @quote, url: {action: "add_item", controller: "quotes"} do |f|
   = render partial: "/quotes/quote_form", :locals => { :f=>f }
-  = f.hidden_field :order_id, :value => @order.id 
+  = f.hidden_field :order_id, :value => @order.id
 
   = f.submit 'Add item to order'
 
-
-= form_for(@order, url: order_path(@order), html: {method: :put}) do |f| 
+%p
+= form_for @order, url: update_comment_orders_path, html: {method: :post, remote: true, id: 'update_comment_form'} do |f|
+  = f.hidden_field :id, :value => @order.id
   = f.label :comment
-  = f.text_field :comment
-  = f.submit 'Update comment'
+  = f.text_field :comment, { onchange: ("$('#update_comment_form').submit();") }
 
 = render @order.items
-= render @order
+
+%p
+= form_for @order, url: transport_choice_orders_path, html: {method: :post, remote: true, id: 'transport_choice_form'} do |f|
+  = f.label :transport_choice
+  = f.collection_select(:transport_type, TransportType.select('DISTINCT transport_type'), :transport_type, :transport_type, {include_blank: 'Please select option'}, required: true, onchange: ("$('#transport_choice_form').submit();") )
+  = f.hidden_field :order_id, :value => @order.id
+
+%p
+#order_details= render @order
 
 %p
   = link_to 'Save quote', order_path(@order), method: :put

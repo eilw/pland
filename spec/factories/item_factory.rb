@@ -31,6 +31,7 @@ FactoryGirl.define do
   end
 
   factory :order do
+    transport_type 'CIF'
     factory :order_with_items do
       transient do
         items_count 1

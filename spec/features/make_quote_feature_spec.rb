@@ -57,7 +57,6 @@ feature 'Quotes' do
       total_volume = 1000
 
       expect(page).to have_content('3.12')
-      expect(page).to have_content('Order saved')
       expect(page).to have_content("Total volume: #{total_volume}")
       expect(page).to have_content("Transport: #{transport_cost}")
       expect(page).to have_content("Total cost: #{total_cost}")
@@ -73,11 +72,13 @@ feature 'Quotes' do
     scenario 'A user can edit the comment box', js: true do
       login_approved_user_factory_girl
       make_quote
+      fill_in('order_comment', with: 'My comment')
+      visit current_path
 
       expect(page).to have_field('order_comment', with: 'My comment')
 
       fill_in('order_comment', with: 'Updated comment')
-      click_button('Update comment')
+      visit current_path
 
       expect(page).to have_field('order_comment', with: 'Updated comment')
     end

@@ -1,10 +1,12 @@
 %p
-= div_for order do
+= div_for @order do
   Total volume:
-  = order.total_volume
-  
-  Transport:
-  = order.cost_transport
+  = @order.total_volume
 
+%p
+  Transport:
+  %span#transport_cost= @order.total_volume >= 1000 ? @order.cost_transport : 'NA: Minimum volume of 1000kg not reached'
+
+%p
   Total cost:
-  = order.cost_total
+  %span#total_cost= @order.cost_total

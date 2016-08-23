@@ -16,11 +16,13 @@ Rails.application.routes.draw do
   resources :products, only: [:index]
   resource :admin, only: [:users]
   resource :account, only: [:show, :index]
-  resources :quotes, only: [:new, :create] do
+  resources :quotes, only: [:new] do
     get 'price', on: :collection
     post 'add_item', on: :collection
   end
   resources :orders, only: [:show, :update, :index, :destroy], shallow: true do
+    post 'transport_choice', on: :collection
+    post 'update_comment', on: :collection
     resources :items, only: [:edit, :update]
   end
 

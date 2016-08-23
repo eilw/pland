@@ -47,9 +47,11 @@ Todo:
 - See updated price in each view (item / order) - DONE
 - Change validation of item to 100kg - DONE
 - Add dynamic forms for type / grade / diameter - DONE 
+- only update price when all three dropdowns have been selected - DONE
+- add linters so it picks up - DONE
+- Add additional types of transport - DONE
+- Add ajax link for transport and comment - DONE
 
-- only update price when all three dropdowns have been selected
-- Add additional types of transport
 - Error -no admin = nil when first user is created
 - Fix nil error in order cost + add other validation
 - add formobject validations
@@ -58,8 +60,6 @@ Todo:
 - Remove existing orders link
 - See the cost of transport per kg under the total cost of transport
 - Add validation of total order to 1000kg
-- add tests for updating an item
-- add tests for adding an item to the order
 - add in thanks message for new account 
 - add validations to if order cannot be received
 - add error messages if a value from the form is missing
@@ -71,4 +71,5 @@ Todo:
 
 - get the resend password to work on heroku
 - change title of resend email 
-- ADMIN: update prices for steel database
+- ADMIN: update prices for steel database 
+- Change order id -> uid, se activerecord gem

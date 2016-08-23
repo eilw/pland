@@ -1,6 +1,6 @@
 class Quote
   include ActiveModel::Model
-  attr_accessor :comment, :steel_type_id, :steel_grade_id, :steel_width_id, :steel_finish_id, :cost, :volume, :price_kg, :status, :user, :order_id
+  attr_accessor :comment, :steel_type_id, :steel_grade_id, :steel_width_id, :steel_finish_id, :cost, :volume, :price_kg, :status, :user, :order_id, :transport_type
 
   def save
     @order = user.orders.create!(comment: comment)
