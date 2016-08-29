@@ -41,7 +41,6 @@ Todo:
   - Add a mail to be sent to andrew once a user has signed up - DONE
   - sendt the contact form to andrew - DONE
   - add tests to mailers - DONE
-
 - Get price per kg dynamically after diametro has been selected - DONE
 - Refactor into a form object - DONE
 - See updated price in each view (item / order) - DONE
@@ -52,11 +51,13 @@ Todo:
 - Add additional types of transport - DONE
 - Add ajax link for transport and comment - DONE
 
+- Add possibility to delete an item - DONE
+- Add currency - DONE
+- Only make api calls to price_kg if all three have parameters
 - Error -no admin = nil when first user is created
 - Fix nil error in order cost + add other validation
 - add formobject validations
 
-- Add possibility to delete an item
 - Remove existing orders link
 - See the cost of transport per kg under the total cost of transport
 - Add validation of total order to 1000kg

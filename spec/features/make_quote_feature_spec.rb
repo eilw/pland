@@ -3,8 +3,10 @@ require_relative './helpers/users'
 require_relative './helpers/quotes'
 require_relative './helpers/wait_for_ajax'
 
-
 feature 'Quotes' do
+  let(:item_cost) { '$3.12' }
+  let(:updated_item_cost) { '$3.02' }
+
   feature 'Create a quote' do
     scenario 'A user can see the price per kg change according to choices', js: true do
       seed_steel_options
@@ -18,11 +20,13 @@ feature 'Quotes' do
       expect(page).to have_content('0')
       select('Gloss', from: 'quote_steel_finish_id')
 
-      expect(page).to have_content('3.12')
+      wait_for_ajax
+
+      expect(page).to have_content(item_cost)
 
       select('Matt', from: 'quote_steel_finish_id')
 
-      expect(page).to have_content('3.02')
+      expect(page).to have_content(updated_item_cost)
     end
 
     scenario 'A user can add a new item to the order', js: true do
@@ -38,13 +42,22 @@ feature 'Quotes' do
     scenario 'A user can update the item', js: true do
       login_approved_user_factory_girl
       make_quote
-      expect(page).to have_content('3.12')
+      expect(page).to have_content(item_cost)
 
       click_link('Change item')
-      select('Matte', from: 'item_steel_finish_id')
+      select('Matt', from: 'item_steel_finish_id')
       click_button('Add item to order')
 
-      expect(page).to have_content('3.02')
+      expect(page).to have_content(updated_item_cost)
+    end
+
+    scenario 'A user can delete an item', js: true do
+      login_approved_user_factory_girl
+      make_quote
+      expect(page).to have_content(item_cost)
+      click_link('Delete item')
+
+      expect(page).to have_content('$0.00')
     end
   end
 
@@ -53,18 +66,18 @@ feature 'Quotes' do
       login_approved_user_factory_girl
       make_quote
       transport_cost = 450
-      total_cost = 3570
+      total_cost = "3,570.00"
       total_volume = 1000
 
-      expect(page).to have_content('3.12')
+      expect(page).to have_content(item_cost)
       expect(page).to have_content("Total volume: #{total_volume}")
-      expect(page).to have_content("Transport: #{transport_cost}")
-      expect(page).to have_content("Total cost: #{total_cost}")
+      expect(page).to have_content("Transport: $#{transport_cost}")
+      expect(page).to have_content("Total cost: $#{total_cost}")
 
       click_link('Save quote')
 
       expect(current_path).to eq(orders_path)
-      expect(page).to have_content("Total cost: #{total_cost}")
+      expect(page).to have_content("Total cost: $#{total_cost}")
     end
   end
 

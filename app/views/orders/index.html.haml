@@ -4,7 +4,5 @@
       Order number #{order.id} status is:
       = order.status
     %li
-      Total cost: #{order.cost_total}
+      Total cost: #{number_to_currency(order.cost_total)}
       = link_to 'See order', order_path(order)
-
-

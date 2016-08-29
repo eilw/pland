@@ -4,6 +4,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params.fetch(:id))
   end
 
+  def destroy
+    item = Item.find(params.fetch(:id))
+    order = item.order_id
+    item.delete
+
+    redirect_to order_path(order)
+  end
+
   def update
     item = Item.find(params.fetch(:id))
     item.update(item_params)

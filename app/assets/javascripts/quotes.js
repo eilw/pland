@@ -11,9 +11,10 @@ $(document).ready(function() {
     }
 
     $.get('/quotes/price', data, function(response){
-      priceKg.text(response.new_price_kg);
+      priceKg.html("$" + response.new_price_kg);
     })
   })
+
   var steelGrades = $('#quote_steel_grade_id').html();
   var steelWidths = $('#quote_steel_width_id').html();
   var itemSteelGrades = $('#item_steel_grade_id').html();

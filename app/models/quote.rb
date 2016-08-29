@@ -24,10 +24,10 @@ class Quote
 
   def item_params
     {
-      steel_type_id: steel_type_id, 
+      steel_type_id: steel_type_id,
       steel_grade_id: steel_grade_id,
       steel_width_id: steel_width_id,
-      steel_finish_id: steel_finish_id, 
+      steel_finish_id: steel_finish_id,
       volume: volume,
       price_kg: price_kg
     }

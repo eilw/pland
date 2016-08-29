@@ -18,6 +18,7 @@ class QuotesController < ApplicationController
   def price
     steel_values = (params.fetch(:quote, nil) || params.fetch(:item, nil)).clone
     price_kg = Item.price_kg(steel_values)
+
     render json: { new_price_kg: price_kg }
   end
 
