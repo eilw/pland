@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Item, type: :model do
   let!(:item){ FactoryGirl.create(:item) }
 
-  describe 'belongs' do 
+  describe 'belongs' do
     it { is_expected.to belong_to :order }
     it { is_expected.to belong_to :steel_type }
     it { is_expected.to belong_to :steel_finish }

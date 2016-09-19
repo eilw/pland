@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :update, :index, :destroy], shallow: true do
     post 'transport_choice', on: :collection
     post 'update_comment', on: :collection
-    resources :items, only: [:edit, :update]
+    resources :items, only: [:edit, :update, :destroy]
   end
 
   # Example of regular route:

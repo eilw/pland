@@ -5,8 +5,8 @@
 
 %p
   Transport:
-  %span#transport_cost= @order.total_volume >= 1000 ? @order.cost_transport : 'NA: Minimum volume of 1000kg not reached'
+  %span#transport_cost= @order.total_volume >= 1000 ? number_to_currency(@order.cost_transport) : 'NA: Minimum volume of 1000kg not reached'
 
 %p
   Total cost:
-  %span#total_cost= @order.cost_total
+  %span#total_cost= number_to_currency(@order.cost_total)

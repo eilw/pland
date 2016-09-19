@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
   validates :steel_width, presence: true
   validates :volume, presence: true
   validates_numericality_of :volume, :greater_than_or_equal_to => 100
-  
+
   belongs_to :order
   belongs_to :steel_type
   belongs_to :steel_finish

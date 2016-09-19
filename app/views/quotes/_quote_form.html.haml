@@ -7,9 +7,8 @@
 = f.label :acabado
 = f.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'}, required: true, class: 'steel-selection') 
 
-$
 %span.price-kg 
-  = @item ? @item.price_kg : 0.00
+  = (@item && @item.price_kg > 0) ? number_to_currency(@item.price_kg) : number_to_currency(0)
 per kg
 
 = f.label :volumen_kgs

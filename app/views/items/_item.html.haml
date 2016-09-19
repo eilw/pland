@@ -13,12 +13,13 @@
   = SteelWidth.find(item.steel_width_id).width
 
   Price per kg:
-  = item.price_kg
+  = number_to_currency(item.price_kg)
 
   Volume:
   = item.volume
 
   Cost:
-  = item.cost
+  = number_to_currency(item.cost)
 
   = link_to 'Change item', edit_item_path(item)
+  = link_to 'Delete item', item_path(item), method: :delete
