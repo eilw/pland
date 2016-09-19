@@ -50,9 +50,9 @@ Todo:
 - add linters so it picks up - DONE
 - Add additional types of transport - DONE
 - Add ajax link for transport and comment - DONE
-
 - Add possibility to delete an item - DONE
 - Add currency - DONE
+
 - Only make api calls to price_kg if all three have parameters
 - Error -no admin = nil when first user is created
 - Fix nil error in order cost + add other validation
