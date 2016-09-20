@@ -1,15 +1,18 @@
-= f.label :tipo
-= f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type,{include_blank: 'Please select option'}, required: true)
-= f.label :_grado
-= f.grouped_collection_select(:steel_grade_id, SteelType.all, :steel_grade_options, :steel_type, :id, :grade, {include_blank: 'Please select option'}, required: true, class: 'steel-selection')
-= f.label :diametro
-= f.grouped_collection_select(:steel_width_id, SteelType.all, :steel_width_options, :steel_type, :id, :width,{include_blank: 'Please select option'}, required: true, class: 'steel-selection')
-= f.label :acabado
-= f.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'}, required: true, class: 'steel-selection') 
-
-%span.price-kg 
-  = (@item && @item.price_kg > 0) ? number_to_currency(@item.price_kg) : number_to_currency(0)
-per kg
-
-= f.label :volumen_kgs
-= f.number_field :volume, required: true,  min: 100, class: 'steel-selection'
+%div.thead
+  %div.tr
+    %div.th= f.label :tipo
+    %div.th= f.label :grado
+    %div.th= f.label :diametro
+    %div.th= f.label :acabado
+    %div.th= f.label :price_kg
+    %div.th= f.label :volumen_kgs
+%div.tbody
+  %div.tr
+    %div.td= f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type,{include_blank: 'Please select option'}, required: true)
+    %div.td= f.grouped_collection_select(:steel_grade_id, SteelType.all, :steel_grade_options, :steel_type, :id, :grade, {include_blank: 'Please select option'}, required: true, class: 'steel-selection')
+    %div.td= f.grouped_collection_select(:steel_width_id, SteelType.all, :steel_width_options, :steel_type, :id, :width,{include_blank: 'Please select option'}, required: true, class: 'steel-selection')
+    %div.td= f.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish,{include_blank: 'Please selection option'}, required: true, class: 'steel-selection') 
+    %div.td
+      %span.price-kg 
+        = (@item && @item.price_kg > 0) ? number_to_currency(@item.price_kg) : number_to_currency(0)
+    %div.td= f.number_field :volume, required: true,  min: 100, class: 'steel-selection'

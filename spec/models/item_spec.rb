@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Item, type: :model do
-  let!(:item){ FactoryGirl.create(:item) }
+  let!(:item) { FactoryGirl.create(:item) }
 
   describe 'belongs' do
     it { is_expected.to belong_to :order }

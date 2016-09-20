@@ -7,23 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link_to "Inicio", home_index_path %>
-  <%= link_to "Sobre nosotros", about_index_path %>
-  <%= link_to "Productos", products_path %>
-  <%= link_to "Contacto", contacts_path %>
-
-  <% if user_signed_in? %>
-    <%= link_to "Mi cuenta", account_path(current_user) %>
-    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Log in", new_user_session_path %>
-    <%= link_to "Sign up", new_user_registration_path %>
-  <% end %>
-
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Inicio", home_index_path %></li>
+          <li><%= link_to "Sobre nosotros", about_index_path %></li>
+          <li><%= link_to "Productos", products_path %></li>
+          <li><%= link_to "Contacto", contacts_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "Mi cuenta", account_path(current_user) %></li>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

@@ -1,8 +1,9 @@
-= form_for @quote, url: {action: "add_item", controller: "quotes"} do |f|
-  = render partial: "/quotes/quote_form", :locals => { :f=>f }
-  = f.hidden_field :order_id, :value => @order.id
+%div.table
+  = form_for @quote, url: {action: "add_item", controller: "quotes"} do |f|
+    = render partial: "/quotes/quote_form", :locals => { :f=>f }
+    = f.hidden_field :order_id, :value => @order.id
 
-  = f.submit 'Add item to order'
+    = f.submit 'Add item to order'
 
 %p
 = form_for @order, url: update_comment_orders_path, html: {method: :post, remote: true, id: 'update_comment_form'} do |f|
