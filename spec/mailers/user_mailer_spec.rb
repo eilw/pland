@@ -9,11 +9,8 @@ describe UserMailer, type: :mailer do
       expect(mail.to).to eq([admin.email])
     end
 
-    it 'assigns @name' do
+    it 'assigns @name and @company' do
       expect(mail.body.encoded).to match(new_user.name)
-    end
-
-    it 'assigns @company' do
       expect(mail.body.encoded).to match(new_user.company)
     end
   end

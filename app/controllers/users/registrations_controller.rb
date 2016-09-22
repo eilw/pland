@@ -10,9 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #   POST /resource
    def create
      super
-     if @user.persisted?
-       UserMailer.request_approval_email(@user).deliver_now
-     end
+     UserMailer.request_approval_email(@user).deliver_now if @user.persisted?
    end
 #
 #   GET /resource/edit
