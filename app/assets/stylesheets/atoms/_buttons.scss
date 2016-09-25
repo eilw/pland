@@ -1,0 +1,24 @@
+.item-submit {
+  width: 100px;
+  margin-top: $vertical-spacing;
+  margin-left: auto;
+  background-color: $secondary;
+  border-color: $secondary;
+}
+
+.submit-right {
+  float: right;
+}
+
+.btn-cancel {
+  @extend .item-submit;
+  background-color: red;
+  border-color: red;
+}
+
+.submit-order {
+  margin-top: $vertical-spacing;
+  background-color: $secondary;
+  border-color: $secondary;
+  font-size: 120%;
+}

@@ -1,25 +1,19 @@
-%p
-= div_for item do
-  Steel type:
-  = SteelType.find(item.steel_type_id).steel_type
+%div.form-row
+  %div.form-row-container
+    %div.form-cell= SteelType.find(item.steel_type_id).steel_type
 
-  Steel grade
-  = SteelGrade.find(item.steel_grade_id).grade
+    %div.form-cell= SteelGrade.find(item.steel_grade_id).grade
 
-  Steel finish:
-  = SteelFinish.find(item.steel_finish_id).finish
+    %div.form-cell= SteelFinish.find(item.steel_finish_id).finish
 
-  Steel width:
-  = SteelWidth.find(item.steel_width_id).width
+    %div.form-cell= SteelWidth.find(item.steel_width_id).width
 
-  Price per kg:
-  = number_to_currency(item.price_kg)
+    %div.form-cell= number_to_currency(item.price_kg)
 
-  Volume:
-  = item.volume
+    %div.form-cell= item.volume
 
-  Cost:
-  = number_to_currency(item.cost)
+    %div.form-cell= number_to_currency(item.cost)
 
-  = link_to 'Change item', edit_item_path(item)
-  = link_to 'Delete item', item_path(item), method: :delete
+    %div.form-cell.icon-cell
+      = link_to '', edit_item_path(item), class: 'glyphicon glyphicon-edit'
+      = link_to '', item_path(item), method: :delete, class: 'glyphicon glyphicon-remove'

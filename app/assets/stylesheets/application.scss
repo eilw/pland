@@ -16,5 +16,7 @@
 
 @import "utilities/_variables";
 @import "pages/_default_layout";
+@import "atoms/_text";
+@import "atoms/_buttons";
 @import "organisms/_navbar";
-@import "molecules/_table";
+@import "organisms/_form";

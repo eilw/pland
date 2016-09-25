@@ -7,7 +7,7 @@ def make_quote(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', stee
   select(steel_width, from: 'quote_steel_width_id')
   select(steel_finish, from: 'quote_steel_finish_id')
   fill_in('quote_volume', with: volume)
-  click_button('Add item to order')
+  click_button('Add to order')
 
   select('CIF', from: 'order_transport_type')
 end
@@ -22,5 +22,5 @@ def add_item(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', steel_
   select(steel_width, from: 'quote_steel_width_id')
   select(steel_finish, from: 'quote_steel_finish_id')
   fill_in('quote_volume', with: volume)
-  click_button('Add item to order')
+  click_button('Add to order')
 end

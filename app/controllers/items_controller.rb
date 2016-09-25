@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
   def edit
     @item = Item.find(params.fetch(:id))
+    @order = Order.find(@item.order_id)
   end
 
   def destroy

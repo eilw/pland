@@ -1,14 +1,33 @@
-$black: #000000;
-$white: #fff;
-$grey: grey;
+$black-grey: #212121;
+$white-grey: #fafafa;
+$light-grey: #eeeeee;
+$dark-grey: #616161;
+$white: #FFF;
+$mid-light-grey: #E0E0E0;
+$mid-grey: #9E9E9E;
 
-$primary-color: $black;
-$secondary-color: $white;
+$primary: $black-grey;
+$primary-bg: $white-grey;
+$secondary: $dark-grey;
+$tertinary: $light-grey;
+$border-color: $mid-light-grey;
 
-$bg-highlight    : $grey;
-$col-default     : $secondary-color;
-$col-highlight   : $grey;
 
+$bg-highlight    : $mid-light-grey;
+$col-default     : $light-grey;
+$col-highlight   : $mid-grey;
+$active-color    : $dark-grey;
+
+$body-margin: 3%;
+
+
+//Spacing
+$vertical-spacing: 16px;
+$horizontal-spacing: 16px;
+
+
+
+////////////////NOT USED
 
 //Font sizes
 $BASE_TEXT_SIZE: 16px;

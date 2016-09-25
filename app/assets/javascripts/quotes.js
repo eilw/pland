@@ -3,8 +3,8 @@ $(document).ready(function() {
   $('.steel-selection').on('change', function(event){
     event.preventDefault();
 
-    var priceKg = $(this).siblings('.price-kg');
-    var data = $('#new_quote').serialize();
+    var priceKg = $('.active > .price-cell > .price-kg');
+    var data = $('.new_quote').serialize();
     var item_data = $('.edit_item').serialize();
     if (!data){
       data = item_data;
@@ -28,7 +28,7 @@ $(document).ready(function() {
     var gradeOptions = $(steelGrades).filter(optgroup).html();
     var widthOptions = $(steelWidths).filter(optgroup).html();
 
-    var placeholder = '<option disabled selected value>Please select option</option>';
+    var placeholder = '<option disabled selected value>Seleccionar</option>';
 
     $('#quote_steel_grade_id').html(placeholder + gradeOptions);
     $('#quote_steel_width_id').html(placeholder + widthOptions);
@@ -40,7 +40,7 @@ $(document).ready(function() {
     var gradeOptions = $(itemSteelGrades).filter(optgroup).html();
     var widthOptions = $(itemSteelWidths).filter(optgroup).html();
 
-    var placeholder = '<option disabled selected value>Please select option</option>';
+    var placeholder = '<option disabled selected value>Seleccionar</option>';
 
     $('#item_steel_grade_id').html(placeholder + gradeOptions);
     $('#item_steel_width_id').html(placeholder + widthOptions);

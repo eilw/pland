@@ -1,30 +1,33 @@
-%div.table
-  = form_for @quote, url: {action: "add_item", controller: "quotes"} do |f|
-    = render partial: "/quotes/quote_form", :locals => { :f=>f }
-    = f.hidden_field :order_id, :value => @order.id
+%h1 Crear cotizacion
+%h3 Your items
 
-    = f.submit 'Add item to order'
-
-%p
-= form_for @order, url: update_comment_orders_path, html: {method: :post, remote: true, id: 'update_comment_form'} do |f|
-  = f.hidden_field :id, :value => @order.id
-  = f.label :comment
-  = f.text_field :comment, { onchange: ("$('#update_comment_form').submit();") }
-
-= render @order.items
-
-%p
-= form_for @order, url: transport_choice_orders_path, html: {method: :post, remote: true, id: 'transport_choice_form'} do |f|
-  = f.label :transport_choice
-  = f.collection_select(:transport_type, TransportType.select('DISTINCT transport_type'), :transport_type, :transport_type, {include_blank: 'Please select option'}, required: true, onchange: ("$('#transport_choice_form').submit();") )
+= form_for @quote, url: {action: "add_item", controller: "quotes"}, html: {class: "new_quote form-container"} do |f|
+  %div.form-row.form-header
+    %div.form-row-container
+      %div.form-cell Tipo
+      %div.form-cell Grado composicion
+      %div.form-cell Diametro <small>mm</small>
+      %div.form-cell Acabado
+      %div.form-cell Precio <small>/kg</small>
+      %div.form-cell Volumen <small>kgs</small>
+      %div.form-cell Costo <small>USD</small>
+      %div.form-cell.icon-cell
+  = render @order.items
+  = render partial: "/quotes/quote_form", :locals => { :f=>f }
   = f.hidden_field :order_id, :value => @order.id
+  = f.submit 'Add to order', class: 'btn btn-primary item-submit'
 
-%p
-#order_details= render @order
+%h3 Transporte
+%div#order_details=render @order
+%div.row
+  %div.col-md-4
+  %div.col-md-4
+  %div.col-md-4
+    = link_to 'SOLICITAR CONFIRMACION', order_path(@order, status: 'Requested'), method: :put, class: 'btn btn-primary btn-block submit-order'
+    Sin compromis de compra
+    %br
+    = link_to 'Cancel quote', order_path(@order), method: :delete, class: 'btn btn-primary item-submit btn-cancel'
+    = link_to 'Save quote', order_path(@order), method: :put, class: 'btn btn-primary item-submit'
+    <br>
 
-%p
-  = link_to 'Save quote', order_path(@order), method: :put
-  = link_to 'Cancel quote', order_path(@order), method: :delete
-
-%p
-  = link_to 'Request quote', order_path(@order, status: 'Requested'), method: :put
+%div.row

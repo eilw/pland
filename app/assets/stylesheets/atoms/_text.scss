@@ -1,0 +1,20 @@
+$border-thickness: 0.5px;
+
+h1 {
+  padding-bottom: $vertical-spacing;
+  border-bottom: (8 * $border-thickness) solid $primary;
+}
+
+h3 {
+  padding-bottom: ($vertical-spacing / 2);
+  border-bottom: 0.5px solid $primary;
+}
+
+.glyphicon {
+  color: $primary;
+  padding-right: ($horizontal-spacing / 2);
+}
+
+.back-link {
+  margin-top: $vertical-spacing;
+}

@@ -36,7 +36,7 @@ feature 'Quotes' do
 
       total_volume = 2000
 
-      expect(page).to have_content("Total volume: #{total_volume}")
+      expect(page).to have_content(total_volume)
     end
 
     scenario 'A user can update the item', js: true do
@@ -44,9 +44,9 @@ feature 'Quotes' do
       make_quote
       expect(page).to have_content(item_cost)
 
-      click_link('Change item')
+      find(:css, '.glyphicon-edit').click
       select('Matt', from: 'item_steel_finish_id')
-      click_button('Add item to order')
+      click_button('Update')
 
       expect(page).to have_content(updated_item_cost)
     end
@@ -55,7 +55,7 @@ feature 'Quotes' do
       login_approved_user_factory_girl
       make_quote
       expect(page).to have_content(item_cost)
-      click_link('Delete item')
+      find(:css, '.glyphicon-remove').click
 
       expect(page).to have_content('$0.00')
     end
@@ -70,9 +70,9 @@ feature 'Quotes' do
       total_volume = 1000
 
       expect(page).to have_content(item_cost)
-      expect(page).to have_content("Total volume: #{total_volume}")
-      expect(page).to have_content("Transport: $#{transport_cost}")
-      expect(page).to have_content("Total cost: $#{total_cost}")
+      expect(page).to have_content(total_volume)
+      expect(page).to have_content(transport_cost)
+      expect(page).to have_content(total_cost)
 
       click_link('Save quote')
 
@@ -101,7 +101,7 @@ feature 'Quotes' do
     scenario 'A user can submit a quote', js: true do
       login_approved_user_factory_girl
       make_quote
-      click_link('Request quote')
+      click_link('SOLICITAR CONFIRMACION')
 
       expect(page).to have_content('status is: Requested')
       expect(page).to have_content('Gracias por solicitar')

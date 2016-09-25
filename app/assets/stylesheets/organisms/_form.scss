@@ -1,0 +1,60 @@
+$number-of-columns: 8;
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.form-row {
+  width: 100%;
+}
+
+.form-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  border-bottom: 0.5px solid $border-color;
+}
+
+.form-cell {
+  padding: ($horizontal-spacing/2);
+  width: ( 100% / $number-of-columns);
+  text-align: center;
+  flex-direction: row;
+  align-self: center;
+
+  &.icon-cell {
+    text-align: left;
+    width: ( 100% / $number-of-columns / 2 );
+  }
+
+  &.half-row{
+    text-align: left;
+    width: (4 * ( 100% / $number-of-columns ));
+  }
+}
+.active {
+  background-color: $active-color;
+}
+
+.price-cell{
+  color: $tertinary;
+}
+
+.form-header{
+  font-size: 120%;
+  font-weight: bold;
+}
+
+.comment-input {
+  background-color: $tertinary;
+}
+
+.total-price{
+}
+.full-width{
+  width: 100%;
+}

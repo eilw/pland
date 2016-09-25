@@ -1,12 +1,40 @@
-%p
-= div_for @order do
-  Total volume:
-  = @order.total_volume
+%div.form-container
+  %div.form-row.form-header
+    %div.form-row-container
+      %div.form-cell.half-row Shipping method
+      %div.form-cell Precio <small>/kg</small>
+      %div.form-cell Volumen <small>kgs</small>
+      %div.form-cell Costo <small>USD</small>
+      %div.form-cell.icon-cell
+  %div.form-row
+    = form_for @order, url: transport_choice_orders_path, html: {method: :post, remote: true, id: 'transport_choice_form', class: 'form-row-container'} do |f|
 
-%p
-  Transport:
-  %span#transport_cost= @order.total_volume >= 1000 ? number_to_currency(@order.cost_transport) : 'NA: Minimum volume of 1000kg not reached'
+      %div.form-cell.half-row= f.collection_select(:transport_type, TransportType.select('DISTINCT transport_type'), :transport_type, :transport_type, {include_blank: 'Please select option'}, {required: true, onchange: ("$('#transport_choice_form').submit();"), class: 'form-control'})
+      = f.hidden_field :order_id, :value => @order.id
 
-%p
-  Total cost:
-  %span#total_cost= number_to_currency(@order.cost_total)
+      %div.form-cell
+        %span#transport_cost_kg
+          COST PER KG TRANSPORT
+
+      %div.form-cell= @order.total_volume
+
+      %div.form-cell
+        %span#transport_cost= @order.total_volume >= 1000 ? number_to_currency(@order.cost_transport) : 'NA: Minimum volume of 1000kg not reached'
+
+      %div.form-cell.icon-cell
+%br
+%div.row
+  %div.col-md-4
+    = form_for @order, url: update_comment_orders_path, html: {method: :post, remote: true, id: 'update_comment_form'} do |f|
+      = f.hidden_field :id, :value => @order.id
+      = f.text_area :comment, {rows: 2, class: 'form-control comment-input', placeholder: 'Comentarios', onchange: ("$('#update_comment_form').submit();") }
+  %div.col-md-4
+  %div.col-md-4
+    %div.row
+      %div.col-md-6
+        %h4 Total price
+      %div.col-md-6
+        %h4#total_cost= number_to_currency(@order.cost_total)
+    %div.row
+      %div.col-md-12
+        Estimacion pendiente confirmacion
