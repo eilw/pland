@@ -265,6 +265,7 @@ DEPENDENCIES
   figaro
   haml
   haml-lint
+  haml_lint
   jbuilder (~> 2.0)
   jquery-rails
   mailgun-ruby

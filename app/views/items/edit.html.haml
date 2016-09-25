@@ -1,22 +1,22 @@
-= form_for @item, html: {class: 'edit_item form-container'} do |f|
-  %div.form-row.form-header
-    %div.form-row-container
-      %div.form-cell Tipo
-      %div.form-cell Grado composicion
-      %div.form-cell Diametro <small>mm</small>
-      %div.form-cell Acabado
-      %div.form-cell Precio <small>/kg</small>
-      %div.form-cell Volumen <small>kgs</small>
-      %div.form-cell Costo <small>USD</small>
-      %div.form-cell.icon-cell
+= form_for @item, html: { class: 'edit_item form-container' } do |f|
+  .form-row.form-header
+    .form-row-container
+      .form-cell Tipo
+      .form-cell Grado composicion
+      .form-cell Diametro <small>mm</small>
+      .form-cell Acabado
+      .form-cell Precio <small>/kg</small>
+      .form-cell Volumen <small>kgs</small>
+      .form-cell Costo <small>USD</small>
+      .form-cell.icon-cell
   = render partial: "/quotes/quote_form", :locals => { :f=>f, :@item=> @item }
-  %div.row.full-width
-    %div.col-md-4
-    %div.col-md-4
-    %div.col-md-4
-      %div.row
-        %div.col-md-5
-        %div.col-md-4.text-right
+  .row.full-width
+    .col-md-4
+    .col-md-4
+    .col-md-4
+      .row
+        .col-md-5
+        .col-md-4.text-right
           = link_to 'Cancel', order_path(@order), class: 'btn btn-primary btn-cancel'
-        %div.col-md-3
+        .col-md-3
           = f.submit 'Update', class: 'btn btn-primary item-submit'

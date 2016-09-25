@@ -1,64 +1,94 @@
-$bgDefault      : $primary;
-$bgHighlight    : $bg-highlight  ;
-$colDefault     : $col-default   ;
-$colHighlight   : $col-highlight ;
+$bg-default: $primary;
+$bg-highlight: $bg-highlight;
+$col-default: $col-default;
+$col-highlight: $col-highlight;
 
 .navbar-default {
-  background-color: $bgDefault;
-  border-color: $bgHighlight;
+  background-color: $bg-default;
+  border-color: $bg-highlight;
 
   .navbar-brand {
-    color: $colDefault;
-    &:hover, &:focus { 
-      color: $colHighlight; }}
+    color: $col-default;
+
+    &:hover, &:focus {
+      color: $col-highlight;
+    }
+  }
 
   .navbar-text {
-    color: $colDefault; }
+    color: $col-default;
+  }
 
   .navbar-nav {
     > li {
+
       > a {
-        color: $colDefault;
+        color: $col-default;
+
         &:hover,  &:focus {
-          color: $colHighlight; }}}
+          color: $col-highlight;
+        }
+      }
+    }
+
     > .active {
+
       > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}
+        color: $col-highlight;
+        background-color: $bg-highlight;
+      }
+    }
+
     > .open {
+
       > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}}
+        color: $col-highlight;
+        background-color: $bg-highlight;
+      }
+    }
+  }
 
   .navbar-toggle {
-    border-color: $bgHighlight;
+    border-color: $bg-highlight;
+
     &:hover, &:focus {
-      background-color: $bgHighlight; }
+      background-color: $bg-highlight;
+    }
+
     .icon-bar {
-      background-color: $colDefault; }}
+      background-color: $col-default;
+    }
+  }
 
   .navbar-collapse,
   .navbar-form {
-    border-color: $colDefault; }
+    border-color: $col-default;
+  }
 
   .navbar-link {
-    color: $colDefault;
+    color: $col-default;
 
     &:hover {
-      color: $colHighlight; }
+      color: $col-highlight;
+    }
   }
 }
 
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu {
+
     > li > a {
-      color: $colDefault;
+      color: $col-default;
       &:hover, &:focus {
-        color: $colHighlight; }}
+        color: $col-highlight;
+      }
+    }
+
     > .active {
       > a, > a:hover, > a:focus, {
-        color: $colHighlight;
-        background-color: $bgHighlight; }
+        color: $col-highlight;
+        background-color: $bg-highlight;
+      }
     }
   }
 }

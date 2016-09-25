@@ -1,31 +1,31 @@
-%div.row
-  %div.col-md-4
-  %div.col-md-4
+.row
+  .col-md-4
+  .col-md-4
     %h2 Contactos details
 
     %p Entre en contacto con nosotros directamente por email:
 
     = form_for @contact do |f|
-      %div.field.form-group
+      .field.form-group
         = f.label :name
         = f.text_field :name, required: true, class: 'form-control'
-      %div.field.form-group
+      .field.form-group
         = f.label :empresa
         = f.text_field :company, required: true, class: 'form-control'
-      %div.field.form-group
+      .field.form-group
         = f.label :email
         = f.email_field :email, required: true, class: 'form-control'
-      %div.field.form-group
+      .field.form-group
         = f.label :phone_num
         = f.text_field :phone_num, class: 'form-control'
-      %div.field.form-group
+      .field.form-group
         = f.label :mensaje
         = f.text_field :message, class: 'form-control'
-      %div.field.form-group
+      .field.form-group
         = label_tag 'Please call me'
         = check_box_tag :request_call
-      %div.action
+      .action
         = f.submit :Submit, class: 'btn btn-primary'
 
       %p= notice
-  %div.col-md-4
+  .col-md-4

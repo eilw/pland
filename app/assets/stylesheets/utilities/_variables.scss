@@ -2,9 +2,9 @@ $black-grey: #212121;
 $white-grey: #fafafa;
 $light-grey: #eeeeee;
 $dark-grey: #616161;
-$white: #FFF;
-$mid-light-grey: #E0E0E0;
-$mid-grey: #9E9E9E;
+$white: #fff;
+$mid-light-grey: #e0e0e0;
+$mid-grey: #9e9e9e;
 
 $primary: $black-grey;
 $primary-bg: $white-grey;
@@ -12,120 +12,116 @@ $secondary: $dark-grey;
 $tertinary: $light-grey;
 $border-color: $mid-light-grey;
 
-
-$bg-highlight    : $mid-light-grey;
-$col-default     : $light-grey;
-$col-highlight   : $mid-grey;
-$active-color    : $dark-grey;
+$bg-highlight: $mid-light-grey;
+$col-default: $light-grey;
+$col-highlight: $mid-grey;
+$active-color: $dark-grey;
 
 $body-margin: 3%;
-
 
 //Spacing
 $vertical-spacing: 16px;
 $horizontal-spacing: 16px;
 
-
-
 ////////////////NOT USED
 
-//Font sizes
-$BASE_TEXT_SIZE: 16px;
-$SECONDARY_TEXT_SIZE: 0.9375em;
-$TERTIARY_TEXT_SIZE: 0.875em;
-$SMALL_TEXT_SIZE: 0.8125em;
-$TINY_TEXT_SIZE: 0.75em;
-
-//Spacing
-$VERTICAL_SPACING: 16px;
-$HORIZONTAL_SPACING: 16px;
-$VERTICAL_SPACING_LARGE: 24px;
-$HORIZONTAL_SPACING_LARGE: 24px;
-$VERTICAL_SPACING_MEDIUM: 12px;
-$HORIZONTAL_SPACING_MEDIUM: 12px;
-$VERTICAL_SPACING_SMALL: 8px;
-$HORIZONTAL_SPACING_SMALL: 8px;
-
-//Grid
-$TOTAL_COLUMNS: 12;
-$COLUMN_WIDTH: false; // false with fluid grid
-$GUTTER_WIDTH: .25;
-$CONTAINER_WIDTH: 960px;
-
-//Colors
-$PRIMARY_DARK:               #4189A1;
-$PRIMARY:                    #2FB5C5;
-$PRIMARY_LIGHT:              #3AC0D0;
-
-$SECONDARY:                   #fff;
-
-$SUCCESS:                   #1FA918;
-$SUCCESS_LIGHT:             #42BC3C;
-
-$URGENT:                  #FFB500;
-
-$INFO:                    #2a6ac1;
-$INFO_LIGHT:              #4c8ade;
-
-$NEW:                    #FF1D5E;
-
-$ERROR:                     #e10c0c;
-$ERROR_LIGHT:               #f52424;
-
-$WARNING:                  #eb6d12;
-$WARNING_LIGHT:            #fa7e24;
-
-$STANDARD_TEXT:                #434343;
-
-$INSTRUCTION:               #a4a4a4;
-
-$DISABLED:                    #dedede;
-
-$BORDER:             #e1e8ed;
-
-$PRIMARY_BG:               #fafafa;
-
-$WHITE:                   #FFF;
-$DEFAULT:                 $WHITE;
-$PRIMARY_BLUE:            #64B2BB;
-$PRIMARY_BLUE_DARK:       #247E88;
-$SECONDARY_BLUE:          #5BC0DE;
-$PRIMARY_GREEN:           #30B32F;
-$PRIMARY_YELLOW:          #FFB400;
-$PRIMARY_ORANGE:          #FF6643;
-$PRIMARY_RED:             #CA4858;
-$LIGHT_ORANGE:            #FFF0EB;
-$LIGHT_RED:               #FAECEE;
-$LIGHT_GREEN:             #EBF6EB;
-$LIGHT_BLUE:              #EAF0F4;
-$ACTION_COLOR:            #3A9FAA;
-$ACTION_COLOR_HOVER:      #64CEDA;
-$CELL_BACKGROUND_HOVER:   #EFEFEE;
-$CELL_BACKGROUND_ACTIVE:  $LIGHT_BLUE;
-$DISABLED_GRAY:           #C7C7C7;
-
-$COLOR_PINK:              #FF2561;
-$COLOR_BROWN:             #837B74;
-
-$TRANSPARENT_BLUE_DARK:   rgba(1, 100, 131, 0.7);
-$TRANSPARENT_BLUE_LIGHT:  rgba(1, 164, 214, 0.4);
-$TRANSPARENT_WHITE:       rgba(255, 255, 255, 0.84);
-$NEUTRAL_GRAY:            #F6F5F3;
-$BORDER_GRAY:             #A4A4A4;
-$BORDER_LIGHT_GRAY:       #DEDEDE;
-$BOOTSTRAP_BORDER_GRAY:   #DDD;
-
-$WARN_DOMINANT_COLOR: $PRIMARY_ORANGE;
-$WARN_WEAK_COLOR: $LIGHT_ORANGE;
-
-$INFO_DOMINANT_COLOR: #EAF0F4;
-$INFO_WEAK_COLOR: #3994D1;
-
-$ERROR_DOMINANT_COLOR: #d75361;
-$ERROR_WEAK_COLOR: #FFFFFF;
-
-$OVERLAY_SHADOW: 0px 3px 4px 0px rgba(0, 0, 0, 0.16);
-$OVERLAY:  rgba($SECONDARY, 0.3);
-
-
-$PAGE-BG:                 $PRIMARY_BG;
+////Font sizes
+//$BASE_TEXT_SIZE: 16px;
+//$SECONDARY_TEXT_SIZE: 0.9375em;
+//$TERTIARY_TEXT_SIZE: 0.875em;
+//$SMALL_TEXT_SIZE: 0.8125em;
+//$TINY_TEXT_SIZE: 0.75em;
+//
+////Spacing
+//$VERTICAL_SPACING: 16px;
+//$HORIZONTAL_SPACING: 16px;
+//$VERTICAL_SPACING_LARGE: 24px;
+//$HORIZONTAL_SPACING_LARGE: 24px;
+//$VERTICAL_SPACING_MEDIUM: 12px;
+//$HORIZONTAL_SPACING_MEDIUM: 12px;
+//$VERTICAL_SPACING_SMALL: 8px;
+//$HORIZONTAL_SPACING_SMALL: 8px;
+//
+////Grid
+//$TOTAL_COLUMNS: 12;
+//$COLUMN_WIDTH: false; // false with fluid grid
+//$GUTTER_WIDTH: .25;
+//$CONTAINER_WIDTH: 960px;
+//
+////Colors
+//$PRIMARY_DARK:               #4189A1;
+//$PRIMARY:                    #2FB5C5;
+//$PRIMARY_LIGHT:              #3AC0D0;
+//
+//$SECONDARY:                   #fff;
+//
+//$SUCCESS:                   #1FA918;
+//$SUCCESS_LIGHT:             #42BC3C;
+//
+//$URGENT:                  #FFB500;
+//
+//$INFO:                    #2a6ac1;
+//$INFO_LIGHT:              #4c8ade;
+//
+//$NEW:                    #FF1D5E;
+//
+//$ERROR:                     #e10c0c;
+//$ERROR_LIGHT:               #f52424;
+//
+//$WARNING:                  #eb6d12;
+//$WARNING_LIGHT:            #fa7e24;
+//
+//$STANDARD_TEXT:                #434343;
+//
+//$INSTRUCTION:               #a4a4a4;
+//
+//$DISABLED:                    #dedede;
+//
+//$BORDER:             #e1e8ed;
+//
+//$PRIMARY_BG:               #fafafa;
+//
+//$WHITE:                   #FFF;
+//$DEFAULT:                 $WHITE;
+//$PRIMARY_BLUE:            #64B2BB;
+//$PRIMARY_BLUE_DARK:       #247E88;
+//$SECONDARY_BLUE:          #5BC0DE;
+//$PRIMARY_GREEN:           #30B32F;
+//$PRIMARY_YELLOW:          #FFB400;
+//$PRIMARY_ORANGE:          #FF6643;
+//$PRIMARY_RED:             #CA4858;
+//$LIGHT_ORANGE:            #FFF0EB;
+//$LIGHT_RED:               #FAECEE;
+//$LIGHT_GREEN:             #EBF6EB;
+//$LIGHT_BLUE:              #EAF0F4;
+//$ACTION_COLOR:            #3A9FAA;
+//$ACTION_COLOR_HOVER:      #64CEDA;
+//$CELL_BACKGROUND_HOVER:   #EFEFEE;
+//$CELL_BACKGROUND_ACTIVE:  $LIGHT_BLUE;
+//$DISABLED_GRAY:           #C7C7C7;
+//
+//$COLOR_PINK:              #FF2561;
+//$COLOR_BROWN:             #837B74;
+//
+//$TRANSPARENT_BLUE_DARK:   rgba(1, 100, 131, 0.7);
+//$TRANSPARENT_BLUE_LIGHT:  rgba(1, 164, 214, 0.4);
+//$TRANSPARENT_WHITE:       rgba(255, 255, 255, 0.84);
+//$NEUTRAL_GRAY:            #F6F5F3;
+//$BORDER_GRAY:             #A4A4A4;
+//$BORDER_LIGHT_GRAY:       #DEDEDE;
+//$BOOTSTRAP_BORDER_GRAY:   #DDD;
+//
+//$WARN_DOMINANT_COLOR: $PRIMARY_ORANGE;
+//$WARN_WEAK_COLOR: $LIGHT_ORANGE;
+//
+//$INFO_DOMINANT_COLOR: #EAF0F4;
+//$INFO_WEAK_COLOR: #3994D1;
+//
+//$ERROR_DOMINANT_COLOR: #d75361;
+//$ERROR_WEAK_COLOR: #FFFFFF;
+//
+//$OVERLAY_SHADOW: 0px 3px 4px 0px rgba(0, 0, 0, 0.16);
+//$OVERLAY:  rgba($SECONDARY, 0.3);
+//
+//
+//$PAGE-BG:                 $PRIMARY_BG;

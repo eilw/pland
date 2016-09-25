@@ -1,13 +1,13 @@
 $border-thickness: 0.5px;
 
 h1 {
-  padding-bottom: $vertical-spacing;
   border-bottom: (8 * $border-thickness) solid $primary;
+  padding-bottom: $vertical-spacing;
 }
 
 h3 {
-  padding-bottom: ($vertical-spacing / 2);
   border-bottom: 0.5px solid $primary;
+  padding-bottom: ($vertical-spacing / 2);
 }
 
 .glyphicon {

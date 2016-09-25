@@ -1,19 +1,19 @@
-%div.form-row
-  %div.form-row-container
-    %div.form-cell= SteelType.find(item.steel_type_id).steel_type
+.form-row
+  .form-row-container
+    .form-cell= SteelType.find(item.steel_type_id).steel_type
 
-    %div.form-cell= SteelGrade.find(item.steel_grade_id).grade
+    .form-cell= SteelGrade.find(item.steel_grade_id).grade
 
-    %div.form-cell= SteelFinish.find(item.steel_finish_id).finish
+    .form-cell= SteelFinish.find(item.steel_finish_id).finish
 
-    %div.form-cell= SteelWidth.find(item.steel_width_id).width
+    .form-cell= SteelWidth.find(item.steel_width_id).width
 
-    %div.form-cell= number_to_currency(item.price_kg)
+    .form-cell= number_to_currency(item.price_kg)
 
-    %div.form-cell= item.volume
+    .form-cell= item.volume
 
-    %div.form-cell= number_to_currency(item.cost)
+    .form-cell= number_to_currency(item.cost)
 
-    %div.form-cell.icon-cell
+    .form-cell.icon-cell
       = link_to '', edit_item_path(item), class: 'glyphicon glyphicon-edit'
       = link_to '', item_path(item), method: :delete, class: 'glyphicon glyphicon-remove'

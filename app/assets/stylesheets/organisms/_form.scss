@@ -1,10 +1,10 @@
 $number-of-columns: 8;
 
 .form-container {
+  align-content: flex-start;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  align-content: flex-start;
 }
 
 .form-row {
@@ -12,39 +12,40 @@ $number-of-columns: 8;
 }
 
 .form-row-container {
+  align-items: flex-start;
+  border-bottom: 0.5px solid $border-color;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
   justify-content: space-around;
-  border-bottom: 0.5px solid $border-color;
 }
 
 .form-cell {
-  padding: ($horizontal-spacing/2);
-  width: ( 100% / $number-of-columns);
-  text-align: center;
-  flex-direction: row;
   align-self: center;
+  flex-direction: row;
+  padding: ($horizontal-spacing / 2);
+  text-align: center;
+  width: (100% / $number-of-columns);
 
   &.icon-cell {
     text-align: left;
-    width: ( 100% / $number-of-columns / 2 );
+    width: (100% / $number-of-columns / 2);
   }
 
-  &.half-row{
+  &.half-row {
     text-align: left;
-    width: (4 * ( 100% / $number-of-columns ));
+    width: (4 * (100% / $number-of-columns));
   }
 }
+
 .active {
   background-color: $active-color;
 }
 
-.price-cell{
+.price-cell {
   color: $tertinary;
 }
 
-.form-header{
+.form-header {
   font-size: 120%;
   font-weight: bold;
 }
@@ -53,8 +54,6 @@ $number-of-columns: 8;
   background-color: $tertinary;
 }
 
-.total-price{
-}
-.full-width{
+.full-width {
   width: 100%;
 }
