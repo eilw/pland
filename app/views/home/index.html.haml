@@ -4,28 +4,4 @@
 
 %p Ingrese aqui para ver nuestros precios y condiciones de venta
 
-%p Entre en contacto con nosotros directamente por email:
 
-= form_for @contact do |f|
-  %div.field
-  = f.label :name
-  = f.text_field :name, required: true
-  %div.field
-  = f.label :empresa
-  = f.text_field :company, required: true
-  %div.field
-  = f.label :email
-  = f.email_field :email, required: true
-  %div.field
-  = f.label :phone_num
-  = f.text_field :phone_num
-  %div.field
-  = f.label :mensaje
-  = f.text_field :message
-  %div.field
-  = label_tag 'Please call me'
-  = check_box_tag :request_call
-  %div.action
-  = f.submit :Submit
-
-  %p= notice
