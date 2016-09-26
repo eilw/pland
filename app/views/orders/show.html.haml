@@ -1,5 +1,5 @@
 %h1 Crear cotizacion
-%h3 Your items
+%h3 Sus artículos
 
 = form_for @quote, url: {action: 'add_item', controller: 'quotes'}, html: {class: 'new_quote form-container'} do |f|
   .form-row.form-header
@@ -23,7 +23,7 @@
   .col-md-4
   .col-md-4
   .col-md-4
-    = link_to 'SOLICITAR CONFIRMACION', order_path(@order, status: 'Requested'), method: :put, class: 'btn btn-primary btn-block submit-order'
+    = link_to 'SOLICITAR CONFIRMACIÓN', order_path(@order, status: 'Requested'), method: :put, class: 'btn btn-primary btn-block submit-order'
     Sin compromis de compra
     %br
     = link_to 'Cancel quote', order_path(@order), method: :delete, class: 'btn btn-primary item-submit btn-cancel'

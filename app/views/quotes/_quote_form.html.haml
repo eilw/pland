@@ -15,5 +15,6 @@
     .form-cell= f.number_field :volume, required: true, min: 100, class: 'steel-selection form-control', placeholder: 'Enter kg'
 
     .form-cell.price-cell
-      Bla bla bal
+      %span.price-item
+        = (@item && @item.cost  > 0) ? number_to_currency(@item.cost) : number_to_currency(0)
     .form-cell.icon-cell

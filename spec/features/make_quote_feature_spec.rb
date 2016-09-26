@@ -1,14 +1,13 @@
 require 'rails_helper'
 require_relative './helpers/users'
 require_relative './helpers/quotes'
-require_relative './helpers/wait_for_ajax'
 
 feature 'Quotes' do
   let(:item_cost) { '$3.12' }
   let(:updated_item_cost) { '$3.02' }
 
   feature 'Create a quote' do
-    scenario 'A user can see the price per kg change according to choices', js: true do
+    scenario 'A user can see the price per kg and item change according to choices', js: true do
       seed_steel_options
 
       login_approved_user_factory_girl
@@ -20,13 +19,14 @@ feature 'Quotes' do
       expect(page).to have_content('0')
       select('Gloss', from: 'quote_steel_finish_id')
 
-      wait_for_ajax
-
       expect(page).to have_content(item_cost)
 
       select('Matt', from: 'quote_steel_finish_id')
 
       expect(page).to have_content(updated_item_cost)
+
+      fill_in('quote_volume', with: 1000)
+      expect(page).to have_content('$3020')
     end
 
     scenario 'A user can add a new item to the order', js: true do
@@ -101,7 +101,7 @@ feature 'Quotes' do
     scenario 'A user can submit a quote', js: true do
       login_approved_user_factory_girl
       make_quote
-      click_link('SOLICITAR CONFIRMACION')
+      click_link('SOLICITAR CONFIRMACIÓN')
 
       expect(page).to have_content('status is: Requested')
       expect(page).to have_content('Gracias por solicitar')

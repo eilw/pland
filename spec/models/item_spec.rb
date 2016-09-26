@@ -46,28 +46,4 @@ describe Item, type: :model do
       expect(item.cost).to eq(3120)
     end
   end
-
-  describe '#price_kg' do
-    it 'calculates the price_kg based on params' do
-      params = {
-        'steel_grade_id' => SteelGrade.all.first.id,
-        'steel_width_id' => SteelWidth.all.first.id,
-        'steel_finish_id' => SteelFinish.all.first.id
-      }
-      price_kg = Item.price_kg(params)
-
-      expect(price_kg).to eq(3.12)
-    end
-
-    it 'returns the 0 if an option is missing' do
-      missing_params = {
-        'steel_grade_id' => SteelGrade.all.first.id,
-        'steel_width_id' => SteelWidth.all.first.id,
-        'steel_finish_id' => ''
-      }
-      price_kg = Item.price_kg(missing_params)
-
-      expect(price_kg).to eq(0)
-    end
-  end
 end
