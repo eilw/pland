@@ -23,12 +23,6 @@ class Order < ActiveRecord::Base
     items_cost + cost_transport
   end
 
-  def select_transport(type)
-    self.transport_type = TransportType.where(transport_type: type)
-                                       .where('range_start <= ?', total_volume)
-                                       .max_by(&:range_start)
-  end
-
   private
 
   def all_items

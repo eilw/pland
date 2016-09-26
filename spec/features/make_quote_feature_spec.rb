@@ -65,6 +65,7 @@ feature 'Quotes' do
     scenario 'A user can select the steel options and see the price', js: true do
       login_approved_user_factory_girl
       make_quote
+      transport_cost_per_kg = 0.45
       transport_cost = 450
       total_cost = "3,570.00"
       total_volume = 1000
@@ -72,6 +73,7 @@ feature 'Quotes' do
       expect(page).to have_content(item_cost)
       expect(page).to have_content(total_volume)
       expect(page).to have_content(transport_cost)
+      expect(page).to have_content(transport_cost_per_kg)
       expect(page).to have_content(total_cost)
 
       click_link('Save quote')

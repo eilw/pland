@@ -13,8 +13,7 @@
       = f.hidden_field :order_id, value: @order.id
 
       .form-cell
-        %span#transport_cost_kg
-          COST PER KG TRANSPORT
+        %span#transport_cost_kg= @order.total_volume >= 1000 ? number_to_currency(@order.transport_per_kg) : '$ --'
 
       .form-cell= @order.total_volume
 
