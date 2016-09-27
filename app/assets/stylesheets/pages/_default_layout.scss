@@ -2,5 +2,5 @@ body {
   margin-left: $body-margin;
   margin-right: $body-margin;
   padding-bottom: 40px;
-  padding-top: $vertical-spacing;
+  padding-top: ($vertical-spacing * 4);
 }

@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     order = Order.find(params.fetch(:id))
     if params[:status]
       order.update(status: params[:status])
-      flash[:notice] = 'Gracias por solicitar una confirmación de orden. Estaremos en contacto dentro de 48 horas para confirmar los detalles.'
+      flash[:success] = 'Gracias por solicitar una confirmación de orden. Estaremos en contacto dentro de 48 horas para confirmar los detalles.'
     end
 
     redirect_to orders_path
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
 
   def destroy
     Order.find(params.fetch(:id)).destroy
-    flash[:notice] = 'Order deleted'
+    flash[:success] = 'Order deleted'
 
     redirect_to account_path
   end
