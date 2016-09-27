@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = current_user.orders
+    @orders = current_user.orders.reject { |order| order.items.empty? }
   end
 
   def show
