@@ -5,14 +5,14 @@ class Quote
   def save
     @order = user.orders.create!(comment: comment)
     item = @order.items.new(item_params)
-    item.add_price_kg
+    item.add_price_kg(PriceCalculator)
     item.save
   end
 
   def add_item
     @order = Order.find(order_id)
     item = @order.items.build(item_params)
-    item.add_price_kg
+    item.add_price_kg(PriceCalculator)
     item.save
   end
 

@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe Item, type: :model do
   let!(:item) { FactoryGirl.create(:item) }
+  let(:calculator) { double('PriceCalculator') }
+  let(:calculator_klass) { double('PriceCalculatorKlass', new: calculator) }
 
   describe 'belongs' do
     it { is_expected.to belong_to :order }
@@ -34,15 +36,21 @@ describe Item, type: :model do
 
   describe '#add_price_kg' do
     it 'adds the price_kg to the item' do
-      item.add_price_kg
+      allow(calculator).to receive(:price_kg) { 3.12 }
+
+      item.add_price_kg(calculator_klass)
       item.save!
+
       expect(item.price_kg).to eq(3.12)
     end
   end
 
   describe '#cost' do
     it 'returns the price per kg multiplied with the volume' do
-      item.add_price_kg
+      allow(calculator).to receive(:price_kg) { 3.12 }
+
+      item.add_price_kg(calculator_klass)
+
       expect(item.cost).to eq(3120)
     end
   end

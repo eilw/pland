@@ -19,11 +19,14 @@ class Order < ActiveRecord::Base
   end
 
   def cost_total
-    items_cost = all_items.inject(0) { |a, e| a + e.cost }
-    items_cost + cost_transport
+    cost_of_all_items + cost_transport
   end
 
   private
+
+  def cost_of_all_items
+    all_items.inject(0) { |a, e| a + e.cost }
+  end
 
   def all_items
     items.all

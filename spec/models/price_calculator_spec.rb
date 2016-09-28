@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe PriceCalculator do
-  let(:calculator) { described_class.new }
+  let(:calculator) { described_class.new(params) }
 
   before(:each) do
     # Populates steel items to be used
@@ -10,16 +10,15 @@ describe PriceCalculator do
 
   describe '#price_kg' do
     it 'calculates the price_kg based on params' do
-      price_kg = calculator.price_kg(params)
       expected_price = 3.12
 
-      expect(price_kg).to eq(expected_price)
+      expect(calculator.price_kg).to eq(expected_price)
     end
 
     it 'returns the 0 if an option is missing' do
-      price_kg = calculator.price_kg(missing_params)
+      other_calculator = described_class.new(missing_params)
 
-      expect(price_kg).to eq(0)
+      expect(other_calculator.price_kg).to eq(0)
     end
   end
 
@@ -27,11 +26,12 @@ describe PriceCalculator do
     it 'calculates the cost of the item based on params' do
       cost_of_item = 3120
 
-      expect(calculator.cost(params)).to eq(cost_of_item)
+      expect(calculator.cost_item).to eq(cost_of_item)
     end
 
     it 'returns 0 if the params are not complete' do
-      expect(calculator.cost(missing_params)).to eq(0)
+      other_calculator = described_class.new(missing_params)
+      expect(other_calculator.cost_item).to eq(0)
     end
   end
 

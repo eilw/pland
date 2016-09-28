@@ -1,9 +1,11 @@
 class PriceCalculator
-  def price_kg(params)
-    grade = SteelGrade.find_by(id: params['steel_grade_id'])
-    width = SteelWidth.find_by(id: params['steel_width_id'])
-    finish = SteelFinish.find_by(id: params['steel_finish_id'])
+  attr_reader :params
 
+  def initialize(params)
+    @params = params
+  end
+
+  def price_kg
     if grade && width && finish
       grade.cost + width.cost + finish.cost
     else
@@ -11,9 +13,25 @@ class PriceCalculator
     end
   end
 
-  def cost(params)
-    volume = params['volume'].to_i
+  def cost_item
+    volume * price_kg
+  end
 
-    volume * price_kg(params)
+  private
+
+  def volume
+    params['volume'].to_i
+  end
+
+  def grade
+    SteelGrade.find_by(id: params.fetch('steel_grade_id', nil))
+  end
+
+  def width
+    SteelWidth.find_by(id: params.fetch('steel_width_id', nil))
+  end
+
+  def finish
+    SteelFinish.find_by(id: params.fetch('steel_finish_id', nil))
   end
 end

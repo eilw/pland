@@ -7,6 +7,6 @@ module ApplicationHelper
   }.freeze
 
   def bootstrap_class_for(flash_type)
-    BOOTSTRAP_FLASH_MSG.fetch(flash_type, flash_type.to_s)
+    BOOTSTRAP_FLASH_MSG.fetch(flash_type.to_sym)
   end
 end

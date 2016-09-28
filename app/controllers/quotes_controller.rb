@@ -17,11 +17,9 @@ class QuotesController < ApplicationController
 
   def price
     steel_values = (params.fetch(:quote, nil) || params.fetch(:item, nil)).clone
-    calculator = PriceCalculator.new
-    price_kg = calculator.price_kg(steel_values)
-    cost_item = calculator.cost(steel_values)
+    calculator = PriceCalculator.new(steel_values)
 
-    render json: { new_price_kg: price_kg, new_item_cost: cost_item }
+    render json: { new_price_kg: calculator.price_kg, new_item_cost: calculator.cost_item }
   end
 
   private

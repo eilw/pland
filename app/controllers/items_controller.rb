@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   def update
     item = Item.find(params.fetch(:id))
     item.update(item_params)
-    item.add_price_kg
+    item.add_price_kg(PriceCalculator)
     if item.save!
       redirect_to order_path(item.order_id)
     else
