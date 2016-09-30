@@ -8,10 +8,7 @@ class Order < ActiveRecord::Base
   end
 
   def transport_per_kg
-    type = TransportType.where(transport_type: self.transport_type)
-                        .where('range_start <= ?', total_volume)
-                        .max_by(&:range_start)
-    type ? type.cost : 0
+    TransportType.transport_per_kg(self)
   end
 
   def cost_transport
@@ -22,10 +19,18 @@ class Order < ActiveRecord::Base
     cost_of_all_items + cost_transport
   end
 
+  def complete?
+    (total_volume >= 1000 && valid_transport_type?)
+  end
+
   private
 
+  def valid_transport_type?
+    TransportType.find_by(transport_type: transport_type)
+  end
+
   def cost_of_all_items
-    all_items.inject(0) { |a, e| a + e.cost }
+    all_items.map(&:cost).inject(0, &:+)
   end
 
   def all_items

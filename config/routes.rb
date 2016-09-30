@@ -20,9 +20,11 @@ Rails.application.routes.draw do
     get 'price', on: :collection
     post 'add_item', on: :collection
   end
-  resources :orders, only: [:show, :update, :index, :destroy], shallow: true do
-    post 'transport_choice', on: :collection
-    post 'update_comment', on: :collection
+  resources :orders, only: [:show, :index, :destroy], shallow: true do
+    post 'transport_choice', on: :member
+    post 'update_comment', on: :member
+    post 'submit', on: :member
+    post 'save', on: :member
     resources :items, only: [:edit, :update, :destroy]
   end
 

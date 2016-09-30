@@ -31,7 +31,6 @@ FactoryGirl.define do
   end
 
   factory :order do
-    transport_type 'CIF'
     association :user
 
     factory :order_with_items do

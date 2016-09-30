@@ -1,4 +1,4 @@
-def make_quote(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', steel_finish: 'Gloss', volume: '1000')
+def make_quote(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', steel_finish: 'Gloss', volume: '1000', transport_type: 'CIF')
   seed_steel_options
   click_link('Mi cuenta')
   click_link('Crear cotización')
@@ -9,7 +9,7 @@ def make_quote(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', stee
   fill_in('quote_volume', with: volume)
   click_button('Add to order')
 
-  select('CIF', from: 'order_transport_type')
+  select(transport_type, from: 'order_transport_type')
 end
 
 def seed_steel_options

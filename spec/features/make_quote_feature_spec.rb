@@ -1,6 +1,7 @@
 require 'rails_helper'
 require_relative './helpers/users'
 require_relative './helpers/quotes'
+require_relative './helpers/wait_for_ajax'
 
 feature 'Quotes' do
   let(:item_cost) { '$3.12' }
@@ -29,6 +30,26 @@ feature 'Quotes' do
       expect(page).to have_content('$3020')
     end
 
+    scenario 'A user can see the order details', js: true do
+      login_approved_user_factory_girl
+      make_quote
+      transport_cost_per_kg = 0.45
+      transport_cost = 450
+      total_cost = '3,570.00'
+      total_volume = 1000
+
+      expect(page).to have_content(item_cost)
+      expect(page).to have_content(total_volume)
+      expect(page).to have_content(transport_cost)
+      expect(page).to have_content(transport_cost_per_kg)
+      expect(page).to have_content(total_cost)
+
+      click_link('Save quote')
+
+      expect(current_path).to eq(orders_path)
+      expect(page).to have_content("Total cost: $#{total_cost}")
+    end
+
     scenario 'A user can add a new item to the order', js: true do
       login_approved_user_factory_girl
       make_quote
@@ -39,7 +60,33 @@ feature 'Quotes' do
       expect(page).to have_content(total_volume)
     end
 
-    scenario 'A user can update the item', js: true do
+    scenario 'A user can only submit once the order is valid', js: true do
+      login_approved_user_factory_girl
+      make_quote(volume: 900)
+
+      expect(page).to have_selector('button', 'submit-order.disabled')
+
+      add_item(volume: 100)
+      expect(page).to have_link('SOLICITAR CONFIRMACIÓN')
+    end
+  end
+
+  feature 'Edit a quote' do
+    scenario 'A user can edit the comment box', js: true do
+      login_approved_user_factory_girl
+      make_quote
+      fill_in('order_comment', with: 'My comment')
+      visit current_path
+
+      expect(page).to have_field('order_comment', with: 'My comment')
+
+      fill_in('order_comment', with: 'Updated comment')
+      visit current_path
+
+      expect(page).to have_field('order_comment', with: 'Updated comment')
+    end
+
+    scenario 'A user can update an item', js: true do
       login_approved_user_factory_girl
       make_quote
       expect(page).to have_content(item_cost)
@@ -59,53 +106,39 @@ feature 'Quotes' do
 
       expect(page).to have_content('$0.00')
     end
-  end
 
-  feature 'Save a quote' do
-    scenario 'A user can select the steel options and see the price', js: true do
+    scenario 'A user can change the transport options', js: true do
       login_approved_user_factory_girl
       make_quote
-      transport_cost_per_kg = 0.45
-      transport_cost = 450
-      total_cost = "3,570.00"
-      total_volume = 1000
+      total_cost_with_cif = '3,570.00'
+      total_cost_with_fob = '$3,370.00'
+      expect(page).to have_content(total_cost_with_cif)
 
-      expect(page).to have_content(item_cost)
-      expect(page).to have_content(total_volume)
-      expect(page).to have_content(transport_cost)
-      expect(page).to have_content(transport_cost_per_kg)
-      expect(page).to have_content(total_cost)
+      select('FOB', from: 'order_transport_type')
 
-      click_link('Save quote')
+      wait_for_ajax
 
-      expect(current_path).to eq(orders_path)
-      expect(page).to have_content("Total cost: $#{total_cost}")
-    end
-  end
+      updated_cost = find('#total_cost').text
 
-  feature 'Edit a quote' do
-    scenario 'A user can edit the comment box', js: true do
-      login_approved_user_factory_girl
-      make_quote
-      fill_in('order_comment', with: 'My comment')
-      visit current_path
-
-      expect(page).to have_field('order_comment', with: 'My comment')
-
-      fill_in('order_comment', with: 'Updated comment')
-      visit current_path
-
-      expect(page).to have_field('order_comment', with: 'Updated comment')
+      expect(updated_cost).to eq(total_cost_with_fob)
     end
   end
 
   feature 'Request a quote' do
-    scenario 'A user can submit a quote', js: true do
+    scenario 'A user can submit a quote only if it is complete', js: true do
       login_approved_user_factory_girl
-      make_quote
+      make_quote(transport_type: 'Please select option')
+
+      wait_for_ajax
+
+      expect(page).to have_button('SOLICITAR CONFIRMACIÓN')
+
+      select('FOB', from: 'order_transport_type')
+
+      wait_for_ajax
       click_link('SOLICITAR CONFIRMACIÓN')
 
-      expect(page).to have_content('status is: Requested')
+      expect(page).to have_content('status is: Submitted')
       expect(page).to have_content('Gracias por solicitar')
     end
   end

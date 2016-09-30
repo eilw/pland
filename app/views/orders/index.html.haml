@@ -1,8 +1,20 @@
+%h3 Submitted orders
 - @orders.each do | order |
-  %ul
-    %li
-      Order number #{order.id} status is:
-      = order.status
-    %li
-      Total cost: #{number_to_currency(order.cost_total)}
-      = link_to 'See order', order_path(order)
+  - if order.status == 'Submitted'
+    %ul
+      %li
+        Order number #{order.id} status is:
+        = order.status
+      %li
+        Total cost: #{number_to_currency(order.cost_total)}
+
+%h3 Draft orders
+- @orders.each do |order|
+  - if order.status == 'Saved'
+    %ul
+      %li
+        Order number #{order.id} status is:
+        = order.status
+      %li
+        Total cost: #{number_to_currency(order.cost_total)}
+        = link_to 'Update order', order_path(order)

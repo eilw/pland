@@ -7,10 +7,9 @@
       .form-cell Costo <small>USD</small>
       .form-cell.icon-cell
   .form-row
-    = form_for @order, url: transport_choice_orders_path, html: { method: :post, remote: true, id: 'transport_choice_form', class: 'form-row-container' } do |f|
+    = form_for @order, url: transport_choice_order_path(@order), html: { method: :post, remote: true, id: 'transport_choice_form', class: 'form-row-container' } do |f|
 
       .form-cell.half-row= f.collection_select(:transport_type, TransportType.select('DISTINCT transport_type'), :transport_type, :transport_type, { include_blank: 'Please select option' }, { required: true, onchange: ("$('#transport_choice_form').submit();"), class: 'form-control' })
-      = f.hidden_field :order_id, value: @order.id
 
       .form-cell
         %span#transport_cost_kg= @order.total_volume >= 1000 ? number_to_currency(@order.transport_per_kg) : '$ --'
@@ -24,8 +23,7 @@
 %br
 .row
   .col-md-4
-    = form_for @order, url: update_comment_orders_path, html: { method: :post, remote: true, id: 'update_comment_form' } do |f|
-      = f.hidden_field :id, value:  @order.id
+    = form_for @order, url: update_comment_order_path(@order), html: { method: :post, remote: true, id: 'update_comment_form' } do |f|
       = f.text_area :comment, { rows: 2, class: 'form-control comment-input', placeholder: 'Comentarios', onchange: ("$('#update_comment_form').submit();") }
   .col-md-4
   .col-md-4
