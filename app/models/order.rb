@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   has_many :items, dependent: :destroy
 
   def total_volume
-    all_items.inject(0) { |a, e| a + e.volume }
+    all_items.map(&:volume).inject(0, &:+)
   end
 
   def transport_per_kg
