@@ -34,8 +34,8 @@ width_tig_list = [
 ]
 
 finish_list = [
-  ['Matte', 0],
-  ['Gloss', 0.1]
+  ['Mate', 0],
+  ['Brillante', 0.1]
 ]
 
 steel_grade_mig_list = [

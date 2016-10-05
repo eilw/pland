@@ -18,11 +18,11 @@ feature 'Quotes' do
       select('307Si', from: 'quote_steel_grade_id')
       select('0.8', from: 'quote_steel_width_id')
       expect(page).to have_content('0')
-      select('Gloss', from: 'quote_steel_finish_id')
+      select('Brillante', from: 'quote_steel_finish_id')
 
       expect(page).to have_content(item_cost)
 
-      select('Matt', from: 'quote_steel_finish_id')
+      select('Mate', from: 'quote_steel_finish_id')
 
       expect(page).to have_content(updated_item_cost)
 
@@ -92,7 +92,7 @@ feature 'Quotes' do
       expect(page).to have_content(item_cost)
 
       find(:css, '.glyphicon-edit').click
-      select('Matt', from: 'item_steel_finish_id')
+      select('Mate', from: 'item_steel_finish_id')
       click_button('Update')
 
       expect(page).to have_content(updated_item_cost)
@@ -127,7 +127,7 @@ feature 'Quotes' do
   feature 'Request a quote' do
     scenario 'A user can submit a quote only if it is complete', js: true do
       login_approved_user_factory_girl
-      make_quote(transport_type: 'Please select option')
+      make_quote(transport_type: 'Seleccione una opción')
 
       wait_for_ajax
 

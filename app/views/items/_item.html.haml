@@ -4,9 +4,9 @@
 
     .form-cell= SteelGrade.find(item.steel_grade_id).grade
 
-    .form-cell= SteelFinish.find(item.steel_finish_id).finish
-
     .form-cell= SteelWidth.find(item.steel_width_id).width
+
+    .form-cell= SteelFinish.find(item.steel_finish_id).finish
 
     .form-cell= number_to_currency(item.price_kg)
 

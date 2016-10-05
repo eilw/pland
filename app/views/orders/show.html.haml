@@ -1,30 +1,21 @@
-%h1 Crear cotizacion
+%h1 Crear cotización
 %h3 Sus artículos
 
 = form_for @quote, url: {action: 'add_item', controller: 'quotes'}, html: {class: 'new_quote form-container'} do |f|
-  .form-row.form-header
-    .form-row-container
-      .form-cell Tipo
-      .form-cell Grado composicion
-      .form-cell Diametro <small>mm</small>
-      .form-cell Acabado
-      .form-cell Precio <small>/kg</small>
-      .form-cell Volumen <small>kgs</small>
-      .form-cell Costo <small>USD</small>
-      .form-cell.icon-cell
+  = render "order_form_table_header"
   = render @order.items
   = render partial: '/quotes/quote_form', :locals => { :f=>f }
   = f.hidden_field :order_id, value: @order.id
-  = f.submit 'Add to order', class: 'btn btn-primary item-submit'
+  = f.submit 'Adicionar', class: 'btn btn-primary item-submit'
 
-%h3 Transporte
+%h3 Condición de entrega
 #order_details= render @order
 .row
   .col-md-4
   .col-md-4
   .col-md-4
     #order_submit_container= render partial: 'order_submit'
-
+    Por favor seleccione aquí si le gustaría tener más información sobre impresión de cajas con marca propia
     %br
     = link_to 'Cancel quote', order_path(@order), method: :delete, class: 'btn btn-primary item-submit btn-cancel'
     = link_to 'Save quote', save_order_path(@order), method: :post, class: 'btn btn-primary item-submit'

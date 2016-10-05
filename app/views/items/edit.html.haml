@@ -1,15 +1,6 @@
 = form_for @item, html: { class: 'edit_item form-container' } do |f|
-  .form-row.form-header
-    .form-row-container
-      .form-cell Tipo
-      .form-cell Grado composicion
-      .form-cell Diametro <small>mm</small>
-      .form-cell Acabado
-      .form-cell Precio <small>/kg</small>
-      .form-cell Volumen <small>kgs</small>
-      .form-cell Costo <small>USD</small>
-      .form-cell.icon-cell
-  = render partial: "/quotes/quote_form", :locals => { :f=>f, :@item=> @item }
+  = render partial: 'orders/order_form_table_header'
+  = render partial: '/quotes/quote_form', :locals => { :f=>f, :@item=> @item }
   .row.full-width
     .col-md-4
     .col-md-4

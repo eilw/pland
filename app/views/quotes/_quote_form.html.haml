@@ -2,9 +2,9 @@
   .form-row-container.active
     .form-cell= f.collection_select(:steel_type_id, SteelType.all, :id, :steel_type, { include_blank: 'Tipo' }, { required: true, class: 'form-control' })
 
-    .form-cell= f.grouped_collection_select(:steel_grade_id, SteelType.all, :steel_grade_options, :steel_type, :id, :grade, { include_blank: 'Grado composicion' }, required: true, class: 'steel-selection form-control')
+    .form-cell= f.grouped_collection_select(:steel_grade_id, SteelType.all, :steel_grade_options, :steel_type, :id, :grade, { include_blank: 'Grado' }, required: true, class: 'steel-selection form-control')
 
-    .form-cell= f.grouped_collection_select(:steel_width_id, SteelType.all, :steel_width_options, :steel_type, :id, :width, { include_blank: 'Diametro mm' }, required: true, class: 'steel-selection form-control')
+    .form-cell= f.grouped_collection_select(:steel_width_id, SteelType.all, :steel_width_options, :steel_type, :id, :width, { include_blank: 'Diámetro' }, required: true, class: 'steel-selection form-control')
 
     .form-cell= f.collection_select(:steel_finish_id, SteelFinish.all, :id, :finish, { include_blank: 'Acabado' }, required: true, class: 'steel-selection form-control')
 

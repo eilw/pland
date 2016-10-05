@@ -1,4 +1,4 @@
-def make_quote(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', steel_finish: 'Gloss', volume: '1000', transport_type: 'CIF')
+def make_quote(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', steel_finish: 'Brillante', volume: '1000', transport_type: 'CIF')
   seed_steel_options
   click_link('Mi cuenta')
   click_link('Crear cotización')
@@ -7,7 +7,7 @@ def make_quote(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', stee
   select(steel_width, from: 'quote_steel_width_id')
   select(steel_finish, from: 'quote_steel_finish_id')
   fill_in('quote_volume', with: volume)
-  click_button('Add to order')
+  click_button('Adicionar')
 
   select(transport_type, from: 'order_transport_type')
 end
@@ -16,11 +16,11 @@ def seed_steel_options
   Rails.application.load_seed
 end
 
-def add_item(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', steel_finish: 'Gloss', volume: '1000')
+def add_item(steel_type: 'MIG', steel_grade: '307Si', steel_width: '0.8', steel_finish: 'Brillante', volume: '1000')
   select(steel_type, from: 'quote_steel_type_id')
   select(steel_grade, from: 'quote_steel_grade_id')
   select(steel_width, from: 'quote_steel_width_id')
   select(steel_finish, from: 'quote_steel_finish_id')
   fill_in('quote_volume', with: volume)
-  click_button('Add to order')
+  click_button('Adicionar')
 end

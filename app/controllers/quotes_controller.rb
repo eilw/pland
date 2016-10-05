@@ -7,11 +7,8 @@ class QuotesController < ApplicationController
 
   def add_item
     quote = Quote.new(quote_params)
-    if quote.add_item
-      flash[:success] = 'Item added'
-    else
-      flash[:error] = 'Item not saved'
-    end
+    flash[:error] = 'Item not saved' unless quote.add_item
+
     redirect_to order_path(quote.order)
   end
 

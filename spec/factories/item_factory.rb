@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :steel_finish do
     cost 0.1
-    finish 'Gloss'
+    finish 'Brillante'
   end
 
   factory :steel_width do

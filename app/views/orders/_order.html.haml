@@ -1,7 +1,7 @@
 .form-container
   .form-row.form-header
     .form-row-container
-      .form-cell.half-row Shipping method
+      .form-cell.half-row
       .form-cell Precio <small>/kg</small>
       .form-cell Volumen <small>kgs</small>
       .form-cell Costo <small>USD</small>
@@ -9,15 +9,15 @@
   .form-row
     = form_for @order, url: transport_choice_order_path(@order), html: { method: :post, remote: true, id: 'transport_choice_form', class: 'form-row-container' } do |f|
 
-      .form-cell.half-row= f.collection_select(:transport_type, TransportType.select('DISTINCT transport_type'), :transport_type, :transport_type, { include_blank: 'Please select option' }, { required: true, onchange: ("$('#transport_choice_form').submit();"), class: 'form-control' })
+      .form-cell.half-row= f.collection_select(:transport_type, TransportType.select('DISTINCT transport_type'), :transport_type, :transport_type, { include_blank: 'Seleccione una opción' }, { required: true, onchange: ("$('#transport_choice_form').submit();"), class: 'form-control' })
 
       .form-cell
-        %span#transport_cost_kg= @order.total_volume >= 1000 ? number_to_currency(@order.transport_per_kg) : '$ --'
+        %span#transport_cost_kg= @order.total_volume >= 1000 ? number_to_currency(@order.transport_per_kg) : '$ ___'
 
       .form-cell= @order.total_volume
 
       .form-cell
-        %span#transport_cost= @order.total_volume >= 1000 ? number_to_currency(@order.cost_transport) : 'NA: Minimum volume of 1000kg not reached'
+        %span#transport_cost= @order.total_volume >= 1000 ? number_to_currency(@order.cost_transport) : 'Inválido: volumen mínimo de 1000kg por pedido'
 
       .form-cell.icon-cell
 %br
@@ -29,9 +29,9 @@
   .col-md-4
     .row
       .col-md-6
-        %h4 Total price
+        %h4 Precio total
       .col-md-6
         %h4#total_cost= number_to_currency(@order.cost_total)
     .row
       .col-md-12
-        Estimacion pendiente confirmacion
+        Estimación pendiente confirmación
