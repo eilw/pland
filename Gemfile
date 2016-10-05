@@ -27,8 +27,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'figaro'
 gem 'haml'
+gem 'haml-rails'
 gem 'mailgun-ruby', require: 'mailgun'
 gem 'devise'
+gem 'devise-i18n'
 gem 'shoulda'
 gem 'simple_form'
 

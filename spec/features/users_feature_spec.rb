@@ -3,15 +3,15 @@ require_relative './helpers/users'
 
 feature "User can sign in and out" do
   context "user not logged in and on the homepage" do
-    scenario "should see a 'Log in' link and a 'sign up' link" do
+    scenario "should see a 'Iniciar sesión' link and a 'sign up' link" do
       visit('/')
-      expect(page).to have_link('Log in')
-      expect(page).to have_link('Sign up')
+      expect(page).to have_link('Iniciar sesión')
+      expect(page).to have_link('Registrarse')
     end
 
-    scenario "should not see 'Log out' link" do
+    scenario "should not see 'Salir' link" do
       visit('/')
-      expect(page).not_to have_link('Log out')
+      expect(page).not_to have_link('Salir')
     end
   end
 
@@ -24,27 +24,27 @@ feature "User can sign in and out" do
 
       expect(page).to have_content('Welcome')
 
-      click_link('Log in')
+      click_link('Iniciar sesión')
 
-      fill_in('Email', with: 'test@example.com')
-      fill_in('Password', with: 'testtest')
-      click_button('Log in')
+      fill_in('user_email', with: 'test@example.com')
+      fill_in('user_password', with: 'testtest')
+      click_button('Iniciar sesión')
 
-      expect(page).to have_content('You have signed up successfully but your account has not been approved by your administrator yet')
+      expect(page).to have_content('Que se haya registrado con éxito, pero su cuenta no ha sido aprobado por el administrador todavía.')
     end
   end
 
   context 'user logged in on the homepage' do
-    scenario "should see 'Log out' link" do
+    scenario "should see 'Salir' link" do
       login_approved_user_factory_girl
       visit('/')
-      expect(page).to have_link('Log out')
+      expect(page).to have_link('Salir')
     end
 
-    scenario "should not see a 'Log in' link and a 'sign up' link" do
+    scenario "should not see a 'Iniciar sesión' link and a 'sign up' link" do
       login_approved_user_factory_girl
-      expect(page).not_to have_link('Log in')
-      expect(page).not_to have_link('Sign up')
+      expect(page).not_to have_link('Iniciar sesión')
+      expect(page).not_to have_link('Registrarse')
     end
 
     xscenario 'A user gets a greetings message after signed up a new account' do

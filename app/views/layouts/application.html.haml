@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+    %title Pland
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{ 'aria-controls' => 'navbar', 'aria-expanded' => 'false', 'data-target' => '#navbar', 'data-toggle' => 'collapse', :type => 'button' }
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        .navbar-collapse.collapse#navbar
+          %ul.nav.navbar-nav
+            %li= link_to 'Inicio', home_index_path
+            %li= link_to 'Sobre nosotros', about_index_path
+            %li= link_to 'Productos', products_path
+            %li= link_to 'Contacto', contacts_path
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li= link_to 'Mi cuenta', account_path(current_user)
+              %li= link_to 'Salir', destroy_user_session_path, method: :delete
+            - else
+              %li= link_to 'Iniciar sesión', new_user_session_path
+              %li= link_to 'Registrarse', new_user_registration_path
+        / /.nav-collapse
+    = render partial: 'layouts/messages'
+    = yield

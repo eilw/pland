@@ -23,6 +23,7 @@ es:
       inactive: Tu cuenta aún no ha sido activada.
       invalid: Email o contraseña no válidos.
       last_attempt: Tienes un intento más antes de que tu cuenta sea bloqueada.
+      not_approved: Que se haya registrado con éxito, pero su cuenta no ha sido aprobado por el administrador todavía.
       locked: Tu cuenta está bloqueada.
       not_found_in_database: Email o contraseña no válidos.
       timeout: Tu sesión expiró. Por favor, inicia sesión nuevamente para continuar.
