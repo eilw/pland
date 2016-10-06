@@ -2,6 +2,18 @@
   = link_to 'SOLICITAR CONFIRMACIÓN', submit_order_path(@order), method: :post, class: 'btn btn-primary btn-block submit-order'
   Sin compromis de compra
 - else
-  %button.btn.btn-primary.btn-block.submit-order.disabled SOLICITAR CONFIRMACIÓN
+  %button.btn.btn-primary.btn-block.submit-order-stopped(data-toggle='modal' data-target='#submitErrorModal') SOLICITAR CONFIRMACIÓN
 
-  No se ha cumplido el pedido mínimo de 1000kg
+%p
+
+.modal.fade#submitErrorModal(tabindex="-1" role="dialog")
+  .modal-dialog(role="document")
+    .modal-content
+      .modal-header
+        %button.close(type="button" data-dismiss="modal" aria-label="Close")
+          <span aria-hidden="true">&times;</span>
+        %h4.modal-title#myModalLabelModal Error
+      .modal-body
+        No se ha cumplido el pedido mínimo de 1000kg
+      .modal-footer
+        %button.btn.btn-primary(data-dismiss="modal") Close
