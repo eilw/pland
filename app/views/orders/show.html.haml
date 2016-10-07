@@ -12,11 +12,14 @@
 #order_details= render @order
 .row
   .col-md-4
+    = form_for @order, url: print_label_order_path(@order), html: { method: :post, remote: true, id: 'print_label_form' } do |f|
+      .form-group
+        .checkbox-inline
+          = f.check_box :print_label, id: 'print_label', onchange: ("$('#print_label_form').submit();")
+          = f.label :print_label, "Por favor seleccione aquí si le gustaría tener más información sobre impresión de cajas con marca propia"
   .col-md-4
   .col-md-4
     #order_submit_container= render partial: 'order_submit'
-    Por favor seleccione aquí si le gustaría tener más información sobre impresión de cajas con marca propia
-    %br
     = link_to 'Cancel quote', order_path(@order), method: :delete, class: 'btn btn-primary item-submit btn-cancel'
     = link_to 'Save quote', save_order_path(@order), method: :post, class: 'btn btn-primary item-submit'
     <br>

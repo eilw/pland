@@ -13,10 +13,13 @@ class OrdersController < ApplicationController
   def transport_choice
     @order = Order.find(params.fetch(:id))
     @order.update(transport_type: params.fetch(:order).fetch(:transport_type))
-    respond_to do |format|
-      format.html { redirect_to order_path(order) }
-      format.js {}
-    end
+  end
+
+  def print_label
+    @order = Order.find(params.fetch(:id))
+    @order.update(print_label: params.fetch(:order).fetch(:print_label))
+
+    redirect_to order_path(@order)
   end
 
   def submit

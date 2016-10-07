@@ -31,6 +31,7 @@ FactoryGirl.define do
   end
 
   factory :order do
+    print_label false
     association :user
 
     factory :order_with_items do

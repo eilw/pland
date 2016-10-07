@@ -69,6 +69,15 @@ feature 'Quotes' do
       add_item(volume: 100)
       expect(page).to have_link('SOLICITAR CONFIRMACIÓN')
     end
+
+    scenario 'A user can add they are interested in information about marking', js: true do
+      login_approved_user_factory_girl
+      make_quote
+      check 'print_label'
+      driver.navigate.refresh
+
+      expect(page).has_checked_field?('#print_label')
+    end
   end
 
   feature 'Edit a quote' do
