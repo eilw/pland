@@ -1,6 +1,5 @@
 # require 'coveralls'
 # require 'simplecov'
-require 'support/factory_girl'
 
 # SimpleCov.formatters = [
 #   SimpleCov::Formatter::HTMLFormatter,
@@ -27,13 +26,12 @@ require 'support/factory_girl'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-
-  config.before(:suite) do
-    #Rails.application.load_seed
-  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  config.before(:all) do
+    FactoryGirl.reload
+  end
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

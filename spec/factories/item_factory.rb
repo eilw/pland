@@ -29,20 +29,4 @@ FactoryGirl.define do
     steel_width
     order
   end
-
-  factory :order do
-    print_label false
-    association :user
-
-    factory :order_with_items do
-      association :user
-      transient do
-        items_count 1
-      end
-
-      after(:create) do |order, evaluator|
-        create_list(:item, evaluator.items_count, order: order, volume: 1000)
-      end
-    end
-  end
 end

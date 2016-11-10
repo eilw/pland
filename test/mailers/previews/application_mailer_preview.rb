@@ -1,5 +1,9 @@
 class ApplicationMailerPreview < ActionMailer::Preview
   def user_to_be_approved_email_preview
-    ApplicationMailer.user_to_be_approved_email(User.first)
+    UserMailer.request_approval_email(User.first)
+  end
+
+  def submitted_order_email_preview
+    OrderMailer.submitted_order_email(Order.first)
   end
 end

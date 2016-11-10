@@ -1,0 +1,59 @@
+!!! 5
+%html
+  %head
+    %body
+      %h3 Gracias por su solicitud de una cotización a IndiaSold
+      Estimado/a,
+      %p
+      Muchas gracias por su solicitud de una cotización a IndiaSold. Esta solicitud está siendo transferida a nuestros proveedores en la India, y en breve tendremos una confirmación de los precios y los tiempos de producción y entrega. Le incluyo abajo los detalles de la solicitud:
+      %p
+
+      %table
+        %tr
+          %th Tipo
+          %th Grado
+          %th Diámetro
+          %th Acabado
+          %th Precio
+          %th Volumen
+          %th Costo
+        - @order.items.each do |item|
+          %tr
+            %td= item.steel_type.steel_type
+            %td= item.steel_grade.grade
+            %td= item.steel_width.width
+            %td= item.steel_finish.finish
+            %td= number_to_currency(item.price_kg)
+            %td= item.volume
+            %td= number_to_currency(item.cost)
+          %tr
+      %p
+
+      %h4 Condición de entrega
+      %ul
+        %li
+          <b>Transport:</b>
+          = @order.transport_type
+        %li
+          <strong>Precio/kg:</strong>
+          = number_to_currency(@order.transport_per_kg)
+        %li
+          <b>Volumen:</b>#{@order.total_volume} kg
+        %li
+          <b>Costo:</b>
+          = number_to_currency(@order.cost_transport)
+        %li
+          <b>Precio total:</b>
+          = number_to_currency(@order.cost_total)
+        %p
+        %li
+          Comentarios:
+          = @order.comment
+
+      %p
+      Ante cualquier duda puede estar contacto respondiendo a este email.
+      %p
+      Gracias y saludos,
+      %p
+
+      Andrew

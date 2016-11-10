@@ -4,10 +4,6 @@ describe Order, type: :model do
   let(:order_with_items) { FactoryGirl.create(:order_with_items) }
   let(:order_without_items) { FactoryGirl.create(:order) }
 
-  before(:each) do
-    FactoryGirl.create(:transport_type)
-  end
-
   describe 'associations' do
     it { is_expected.to belong_to :user }
     it { is_expected.to have_many(:items).dependent(:destroy) }
@@ -39,7 +35,7 @@ describe Order, type: :model do
       end
     end
 
-    context 'order is notnot complete' do
+    context 'order is not complete' do
       it 'is incomplete if items not over 1000kg in volume' do
         order_without_items.transport_type = 'CIF'
         expect(order_without_items.complete?).to be_falsey

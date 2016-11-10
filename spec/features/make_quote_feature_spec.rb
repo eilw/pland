@@ -73,10 +73,9 @@ feature 'Quotes' do
     scenario 'A user can add they are interested in information about marking', js: true do
       login_approved_user_factory_girl
       make_quote
-      check 'print_label'
-      driver.navigate.refresh
+      check('print_label')
 
-      expect(page).has_checked_field?('#print_label')
+      expect(page.has_checked_field?('print_label')).to eq(true)
     end
   end
 

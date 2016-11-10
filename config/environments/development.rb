@@ -14,6 +14,7 @@ Rails.application.configure do
     :password       => ENV['mailgun_password'],
     :authentication => :plain,
   }
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/preview"
 
   config.cache_classes = false
 

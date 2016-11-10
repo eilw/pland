@@ -9,6 +9,12 @@ es:
         remember_me: Recordarme
         reset_password_token: Restablecer token contraseña
         unlock_token: Desbloquear token
+    errors:
+      messages:
+        record_invalid: "La validación falló: %{errors}"
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes
     models:
       user: Usuario
   devise:
@@ -88,6 +94,8 @@ es:
       signed_up_but_unconfirmed: Se ha enviado un mensaje con un enlace de confirmación a tu correo electrónico. Abre el enlace para activar tu cuenta.
       update_needs_confirmation: Has actualizado tu cuenta correctamente, pero es necesario confirmar tu nuevo correo electrónico. Por favor, comprueba tu correo y sigue el enlace de confirmación para finalizar la comprobación del nuevo correo electrónico.
       updated: Tu cuenta se ha actualizada.
+      user:
+        signed_up_but_not_approved: Que se haya registrado con éxito, pero su cuenta no ha sido aprobado por el administrador todavía.
     sessions:
       already_signed_out: Sesión finalizada.
       new:
