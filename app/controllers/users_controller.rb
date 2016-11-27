@@ -11,8 +11,11 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update(approved: true)
-    flash[:success] = "#{user.email} approved"
+    unless user.approved?
+      user.update(approved: true)
+      UserMailer.approved_user_email(user).deliver_now
+      flash[:success] = "#{user.email} approved"
+    end
 
     redirect_to users_path
   end

@@ -2,7 +2,7 @@ require 'rails_helper'
 describe OrderMailer, type: :mailer do
   describe 'submitted_order_email' do
     let!(:user) { FactoryGirl.create(:user) }
-    let!(:order) { FactoryGirl.create(:order_with_items, user: user) }
+    let!(:order) { FactoryGirl.create(:order_complete_with_items, user: user) }
     let(:mail) { OrderMailer.submitted_order_email(order) }
     let(:item) { order.items.first }
 

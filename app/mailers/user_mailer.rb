@@ -6,4 +6,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: @admin.email, subject: 'New user on Purple land') if @admin
   end
+
+  def approved_user_email(user)
+    @user = user
+    mail(to: user.email, subject: 'You are approved')
+  end
 end

@@ -31,5 +31,21 @@ describe UsersController do
         expect(response).to redirect_to(account_path)
       end
     end
+
+    describe '#update' do
+      login_admin
+      it 'when a user is approved, it sends an email to the user' do
+        user_to_be_approved = FactoryGirl.create(:user)
+
+        expect { put :update, id: user_to_be_approved }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(flash[:success]).not_to be_empty
+      end
+
+      it 'does not go through approve actions if user is already approved' do
+        approved_user = FactoryGirl.create(:user, :approved)
+
+        expect { put :update, id: approved_user }.to change { ActionMailer::Base.deliveries.count }.by(0)
+      end
+    end
   end
 end

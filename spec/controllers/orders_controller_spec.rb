@@ -3,7 +3,7 @@ require 'rails_helper'
 describe OrdersController do
   login_approved_user
   let(:a_user) { User.all.first }
-  let!(:order_with_item) { FactoryGirl.create(:order_with_items, user: a_user) }
+  let!(:order_with_item) { FactoryGirl.create(:order_complete_with_items, user: a_user) }
   let!(:incomplete_order) { FactoryGirl.create(:order, user: a_user) }
 
   describe '#index' do
