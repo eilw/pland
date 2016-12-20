@@ -99,7 +99,7 @@ es:
     sessions:
       already_signed_out: Sesión finalizada.
       new:
-        sign_in: Iniciar sesión
+        sign_in: Ingresar
       signed_in: Sesión iniciada.
       signed_out: Sesión finalizada.
     shared:
@@ -108,9 +108,9 @@ es:
         didn_t_receive_confirmation_instructions: "¿No ha recibido las instrucciones de confirmación?"
         didn_t_receive_unlock_instructions: "¿No ha recibido instrucciones para desbloquear?"
         forgot_your_password: "¿Ha olvidado su contraseña?"
-        sign_in: Iniciar sesión
+        sign_in: INGRESAR
         sign_in_with_provider: Iniciar sesión con %{provider}
-        sign_up: Registrarse
+        sign_up: REGISTRARSE
     unlocks:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear

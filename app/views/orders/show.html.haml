@@ -6,7 +6,7 @@
   = render @order.items
   = render partial: '/quotes/quote_form', :locals => { :f=>f }
   = f.hidden_field :order_id, value: @order.id
-  = f.submit 'Adicionar', class: 'btn btn-primary item-submit'
+  = f.submit 'ADICIONAR', class: 'btn btn-primary item-submit', id: 'add_item'
 
 %h3 Condición de entrega
 #order_details= render @order

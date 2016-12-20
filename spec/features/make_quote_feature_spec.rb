@@ -12,8 +12,7 @@ feature 'Quotes' do
       seed_steel_options
 
       login_approved_user_factory_girl
-      click_link('Mi cuenta')
-      click_link('Crear cotización')
+      click_link(I18n.t('layouts.application.nav_bar.create_quote'))
       select('MIG', from: 'quote_steel_type_id')
       select('307Si', from: 'quote_steel_grade_id')
       select('0.8', from: 'quote_steel_width_id')

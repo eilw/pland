@@ -1,0 +1,9 @@
+es:
+  layouts:
+    application:
+      nav_bar:
+        sign_up: REGISTRARSE
+        log_in: INGRESAR
+        create_quote: CREAR COTIZACIÓN
+        sign_out: SALIR
+        my_account: MI CUENTA

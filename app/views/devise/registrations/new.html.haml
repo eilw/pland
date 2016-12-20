@@ -2,6 +2,8 @@
   .col-md-4
   .col-md-4
     %h2= t('.sign_up')
+    Creando una cuenta, tendrá acceso a nuestros precios y condiciones de venta, y podrá crear una cotización sin compromiso alguno.
+    %p
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = devise_error_messages!
       .field.form-group
@@ -35,5 +37,5 @@
         = f.password_field :password_confirmation, autocomplete: "off", class:'form-control'
 
       .actions
-        = f.submit t('.sign_up'), class: 'btn btn-primary'
+        = f.submit t('.sign_up').upcase, class: 'btn btn-primary'
   .col-md-4

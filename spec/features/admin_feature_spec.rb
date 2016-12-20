@@ -8,7 +8,7 @@ feature 'Admin' do
       FactoryGirl.create(:user)
       login_as(admin, scope: :user)
       visit('/')
-      click_link('Mi cuenta')
+      click_link('MI CUENTA')
       click_link('Users awaiting approval')
 
       expect(page).to have_content('false')
@@ -18,11 +18,10 @@ feature 'Admin' do
       expect(page).not_to have_link('Approve access')
     end
 
-    scenario 'A non-admin cannot see other users' do
+    scenario 'A non-admin cannot see mi cuenta link' do
       login_approved_user_factory_girl
-      click_link('Mi cuenta')
 
-      expect(page).not_to have_content('Users awaiting approval')
+      expect(page).not_to have_content('MI CUENTA')
     end
   end
 end

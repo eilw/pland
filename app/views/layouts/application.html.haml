@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }/
     %title Pland
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -16,19 +16,19 @@
             %span.icon-bar
             %span.icon-bar
         .navbar-collapse.collapse#navbar
-          %ul.nav.navbar-nav
-            %li= link_to 'Inicio', home_index_path
-            %li= link_to 'Sobre nosotros', about_index_path
-            %li= link_to 'Productos', products_path
-            %li= link_to 'Contacto', contacts_path
           %ul.nav.navbar-nav.navbar-right
+            %li= link_to 'INICIO', home_index_path
+            %li= link_to 'SOBRE NOSOTROS', about_index_path
+            %li= link_to 'PRODUCTOS', products_path
+            %li= link_to 'CONTACTO', contacts_path
             - if user_signed_in?
-              %li= link_to 'Mi cuenta', account_path(current_user)
-              %li= link_to 'Salir', destroy_user_session_path, method: :delete
+              - if current_user.admin?
+                %li= link_to I18n.t('layouts.application.nav_bar.my_account'), account_path(current_user)
+              %li= link_to I18n.t('layouts.application.nav_bar.create_quote'), new_quote_path
+              %li= link_to I18n.t('layouts.application.nav_bar.sign_out'), destroy_user_session_path, method: :delete
             - else
-              %li= link_to 'Iniciar sesión', new_user_session_path
-              %li= link_to 'Registrarse', new_user_registration_path
-        / /.nav-collapse
+              %li= link_to I18n.t('layouts.application.nav_bar.log_in'), new_user_session_path
+              %li= link_to I18n.t('layouts.application.nav_bar.sign_up'), new_user_registration_path
   .container
     = render partial: 'layouts/messages'
     = yield

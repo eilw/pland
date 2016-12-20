@@ -2,6 +2,9 @@
   .col-md-4
   .col-md-4
     %h2= t('.sign_in')
+    Clientes existentes podrán ver el estatus de su pedido, o los detalles de pedidos completados.
+    %p
+
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field.form-group
         = f.label :email
@@ -17,6 +20,6 @@
           = f.label :remember_me
 
       .actions
-        = f.submit t('.sign_in'), class: 'btn btn-primary'
+        = f.submit t('.sign_in').upcase, class: 'btn btn-primary'
     = render "devise/shared/links"
   .col-md-4
