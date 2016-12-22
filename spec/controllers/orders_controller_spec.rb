@@ -6,16 +6,6 @@ describe OrdersController do
   let!(:order_with_item) { FactoryGirl.create(:order_complete_with_items, user: a_user) }
   let!(:incomplete_order) { FactoryGirl.create(:order, user: a_user) }
 
-  describe '#index' do
-    it 'only assigns orders with items to be shown in the view' do
-      order_without_item = FactoryGirl.create(:order, user: a_user)
-
-      get :index
-
-      expect(assigns(:orders)).to eq([order_with_item])
-    end
-  end
-
   describe '#print_label' do
     let(:order) { FactoryGirl.create(:order, user: a_user) }
 

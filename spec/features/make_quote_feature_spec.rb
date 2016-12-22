@@ -42,11 +42,6 @@ feature 'Quotes' do
       expect(page).to have_content(transport_cost)
       expect(page).to have_content(transport_cost_per_kg)
       expect(page).to have_content(total_cost)
-
-      click_link('Save quote')
-
-      expect(current_path).to eq(orders_path)
-      expect(page).to have_content("Total cost: $#{total_cost}")
     end
 
     scenario 'A user can add a new item to the order', js: true do

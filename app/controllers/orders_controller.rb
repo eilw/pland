@@ -1,10 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @orders = current_user.orders.reject { |order| order.items.empty? }
-  end
-
   def show
     @quote = Quote.new
     @order = Order.find(params.fetch(:id))
@@ -35,14 +31,6 @@ class OrdersController < ApplicationController
 
       redirect_to order_path(@order)
     end
-  end
-
-  def save
-    order = Order.find(params.fetch(:id))
-    order.update(status: 'Saved')
-    flash[:success] = 'Order was saved'
-
-    redirect_to orders_path
   end
 
   def update_comment
