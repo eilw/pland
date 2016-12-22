@@ -145,7 +145,7 @@ feature 'Quotes' do
       wait_for_ajax
       click_link('SOLICITAR CONFIRMACIÓN')
 
-      expect(page).to have_content('status is: Submitted')
+      expect(current_path).to eq(quote_confirmation_path)
       expect(page).to have_content('Gracias por solicitar')
     end
   end

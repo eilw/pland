@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index]
   resource :admin, only: [:users]
   resource :account, only: [:show, :index]
+  resource :quote_confirmation, only: [:show]
   resources :quotes, only: [:new] do
     get 'price', on: :collection
     post 'add_item', on: :collection

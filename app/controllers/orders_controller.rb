@@ -28,9 +28,8 @@ class OrdersController < ApplicationController
       @order.update(status: 'Submitted')
       update_costs(@order)
       OrderMailer.submitted_order_email(@order).deliver_now
-      flash[:success] = 'Gracias por solicitar una confirmación de orden. Estaremos en contacto dentro de 48 horas para confirmar los detalles.'
 
-      redirect_to orders_path
+      redirect_to quote_confirmation_path
     else
       flash[:warning] = 'An order needs to be 1000kg of volume minimum'
 
