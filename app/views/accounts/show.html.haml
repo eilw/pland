@@ -1,5 +1,6 @@
-= link_to 'Crear cotización', new_quote_path
+.container.body-content
+  = link_to 'Crear cotización', new_quote_path
 
-- if current_user.admin
-  = link_to 'All Users', users_path
-  = link_to 'Users awaiting approval', users_path(approved: false)
+  - if current_user.admin
+    = link_to 'All Users', users_path
+    = link_to 'Users awaiting approval', users_path(approved: false)

@@ -1,0 +1,23 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{ 'aria-controls' => 'navbar', 'aria-expanded' => 'false', 'data-target' => '#navbar', 'data-toggle' => 'collapse', :type => 'button' }
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'IndiaSold', home_index_path, class: 'navbar-brand'
+    .navbar-collapse.collapse#navbar
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to 'INICIO', home_index_path
+        %li= link_to 'SOBRE NOSOTROS', about_index_path
+        %li= link_to 'PRODUCTOS', products_path
+        %li= link_to 'CONTACTO', contacts_path
+        - if user_signed_in?
+          - if current_user.admin?
+            %li= link_to I18n.t('layouts.application.nav_bar.my_account'), account_path(current_user)
+          %li= link_to I18n.t('layouts.application.nav_bar.create_quote'), new_quote_path
+          %li= link_to I18n.t('layouts.application.nav_bar.sign_out'), destroy_user_session_path, method: :delete
+        - else
+          %li= link_to I18n.t('layouts.application.nav_bar.log_in'), new_user_session_path
+          %li= link_to I18n.t('layouts.application.nav_bar.sign_up'), new_user_registration_path

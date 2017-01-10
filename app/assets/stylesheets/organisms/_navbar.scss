@@ -1,11 +1,13 @@
 $bg-default: $primary;
-$bg-highlight: $bg-highlight;
-$col-default: $col-default;
-$col-highlight: $col-highlight;
+
+.navbar {
+  margin-bottom: 0px;
+}
 
 .navbar-default {
   background-color: $bg-default;
-  border-color: $bg-highlight;
+  border-color: $secondary;
+  //border-color:$bg-highlight;
 
   .navbar-brand {
     color: $col-default;

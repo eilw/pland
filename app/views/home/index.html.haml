@@ -1,7 +1,11 @@
-%h1 Soldadura en acero inoxidable de alta calidad, directo de la India, para todo tamaño de distribuidor, en toda América Latina.
+.jumbotron.fullpage
+  .container
+    = render partial: 'layouts/messages'
+    %h1 Soldadura en acero inoxidable de alta calidad, directo de la India, para todo tamaño de distribuidor, en toda América Latina.
 
-%h2 Nuestro objetivo es crecer su negocio, proveendo productos TIG, MIG y SAW para pedidos a partir de 1 tonelada, a los mejores precios del mercado.
-
-%p Ingrese aqui para ver nuestros precios y condiciones de venta
-
-
+    %h2 Nuestro objetivo es crecer su negocio, proveendo productos TIG, MIG y SAW para pedidos a partir de 1 tonelada, a los mejores precios del mercado.
+    .row
+      .col-md-2
+      .col-md-8
+        - unless current_user
+          = link_to "INGRESAR AQUI <br /> para ver para ver nuestros precios y condiciones de venta".html_safe, new_user_session_path, class: 'btn btn-primary btn-block submit-order'

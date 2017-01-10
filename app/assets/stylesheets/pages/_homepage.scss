@@ -1,0 +1,17 @@
+.fullpage {
+  background-color: $home-page-bg;
+  height: 100%;
+  padding-top: 100px;
+  padding-bottom: 600px;
+}
+
+.jumbotron h1 {
+  color: $white-grey;
+  border-color: $white-grey;
+  text-align: center;
+}
+
+.jumbotron h2 {
+  color: $bg-highlight;
+  text-align: center;
+}

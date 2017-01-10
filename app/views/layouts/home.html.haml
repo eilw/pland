@@ -8,6 +8,4 @@
     = csrf_meta_tags
   %body
     = render partial: 'layouts/navbar'
-    .container.body-content
-      = render partial: 'layouts/messages'
-      = yield
+    = yield
