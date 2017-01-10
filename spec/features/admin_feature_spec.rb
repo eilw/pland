@@ -9,8 +9,9 @@ feature 'Admin' do
       login_as(admin, scope: :user)
       visit('/')
       click_link('MI CUENTA')
+      click_link('Manage Users')
 
-      expect(page).to have_content('false')
+      expect(page).to have_content('User management')
 
       click_link('Approve access')
       expect(page).to have_content('test@test.com approved')

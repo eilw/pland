@@ -5,20 +5,11 @@ describe UsersController do
     context 'logged in as an admin' do
       login_admin
 
-      it 'only admins can view index showing all users' do
+      it 'only admins can view index showing all users in order of created' do
         get :index
 
         expect(response).to render_template(:index)
-        expect(assigns(:users)).to eq(User.all)
-      end
-
-      it 'shows users not yet approved if passed a params' do
-        FactoryGirl.create(:user)
-        unapproved_user = User.where(approved: false)
-        get :index, approved: 'false'
-
-        expect(response).to render_template(:index)
-        expect(assigns(:users)).to eq(unapproved_user)
+        expect(assigns(:users)).to eq(User.all.order(:created_at))
       end
     end
 
