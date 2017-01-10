@@ -9,7 +9,6 @@ feature 'Admin' do
       login_as(admin, scope: :user)
       visit('/')
       click_link('MI CUENTA')
-      click_link('Users awaiting approval')
 
       expect(page).to have_content('false')
 

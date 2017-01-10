@@ -2,11 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_admin, except: [:welcome]
 
   def index
-    @users = if params[:approved] == 'false'
-               User.where(approved: false)
-             else
-               User.all
-             end
+    @users = User.all.order(:created_at)
   end
 
   def update

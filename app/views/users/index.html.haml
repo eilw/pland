@@ -1,10 +1,30 @@
-%table
+%h1 User management
+%table.table
   - if @users
+    %tr
+      %th Nombre
+      %th Empresa
+      %th Pais
+      %th Telefono
+      %th Email
+      %th Admin?
+      %th Approved?
+      %th Last logged in
+      %th Actions
     - @users.each do |user|
       %tr
+        %td= user.name
+        %td= user.company
+        %td= user.country
+        %td= user.phone_num
         %td= user.email
+        %td= user.admin
         %td= user.approved
-      - if user.approved == false
-        %td= link_to 'Approve access', user_path(user), method: :put
-  - else
-    No users are awaiting to be approved
+        %td
+          - if user.last_sign_in_at
+            = user.last_sign_in_at.to_formatted_s(:long_ordinal)
+          - else
+            N/A
+        %td
+          - if user.approved == false
+            = link_to 'Approve access', user_path(user), method: :put
