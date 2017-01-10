@@ -37,4 +37,13 @@ describe OrdersController do
       expect(flash[:warning]).not_to be_empty
     end
   end
+
+  describe '#reset' do
+    it 'removes all the items and refreshes the page' do
+      post :reset, id: order_with_item
+
+      expect(response).to redirect_to(order_path(order_with_item))
+      expect(order_with_item.items.count).to eq(0)
+    end
+  end
 end

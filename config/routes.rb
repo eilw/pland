@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     post 'add_item', on: :collection
   end
   resources :orders, only: [:show, :destroy], shallow: true do
+    post 'reset', on: :member
     post 'print_label', on: :member
     post 'submit', on: :member
     post 'transport_choice', on: :member

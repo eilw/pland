@@ -40,11 +40,11 @@ class OrdersController < ApplicationController
     redirect_to order_path(order)
   end
 
-  def destroy
-    Order.find(params.fetch(:id)).destroy
-    flash[:success] = 'Order deleted'
+  def reset
+    order = Order.find(params.fetch(:id))
+    order.items.destroy_all
 
-    redirect_to account_path
+    redirect_to order_path(order)
   end
 
   private

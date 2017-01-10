@@ -145,14 +145,13 @@ feature 'Quotes' do
     end
   end
 
-  feature 'Delete a quote' do
-    scenario 'A user can delete a quote', js: true do
+  feature 'Reset a quote' do
+    scenario 'A user can reset a quote', js: true do
       login_approved_user_factory_girl
       make_quote
-      click_link('Cancel quote')
+      click_link('Reset')
 
-      expect(page).to have_content('Order deleted')
-      expect(current_path).to eq(account_path)
+      expect(page).to have_content('Precio total $0.00')
     end
   end
 end
