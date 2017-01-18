@@ -32,7 +32,7 @@ gem 'mailgun-ruby', require: 'mailgun'
 gem 'devise'
 gem 'devise-i18n'
 gem 'shoulda'
-gem 'simple_form'
+gem 'rails_admin', '~> 1.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

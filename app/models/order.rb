@@ -3,12 +3,14 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_many :items, dependent: :destroy
 
+  MINIMUM_WEIGHT = 1000
+
   def total_volume
     all_items.map(&:volume).inject(0, &:+)
   end
 
   def transport_per_kg
-    TransportType.transport_per_kg(self)
+    transport_type_service.transport_per_kg(self)
   end
 
   def cost_transport
@@ -20,13 +22,17 @@ class Order < ActiveRecord::Base
   end
 
   def complete?
-    (total_volume >= 1000 && valid_transport_type?)
+    (total_volume >= MINIMUM_WEIGHT && valid_transport_type?)
   end
 
   private
 
+  def transport_type_service
+    TransportType
+  end
+
   def valid_transport_type?
-    TransportType.find_by(transport_type: transport_type)
+    transport_type_service.find_by(transport_type: transport_type)
   end
 
   def cost_of_all_items
